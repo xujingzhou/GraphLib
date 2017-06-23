@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by yushanshui (jurassic) -->
+<CurveStyleLib xmlns="http://www.jurassic.com.cn/CurveStyleML.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jurassic.com.cn/CurveStyleML.xsd CurveStyleML.xsd" name="基础线型库" application="通用制图" author="侏罗纪公司">
+	<CurveStyle id="1" fullname="通用曲线/虚线" width="1">
+		<CurvePen width="1" color="ff000000" color2="ffffffff" gradientcolor="false" dashstyle="Dash" startcap="NoAnchor" endcap="NoAnchor" dashcap="Flat" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
+	</CurveStyle>
+	<CurveStyle id="2" fullname="通用曲线/实线" width="1">
+		<CurvePen width="1" color="ff000000" color2="ffffffff" gradientcolor="false" dashstyle="Solid" startcap="NoAnchor" endcap="NoAnchor" dashcap="Round" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
+	</CurveStyle>
+	<CurveStyle id="3" fullname="交通曲线/铁路线" width="1">
+		<CurvePen width="1" color="ff000000" color2="ffffffff" gradientcolor="false" dashstyle="Solid" startcap="NoAnchor" endcap="NoAnchor" dashcap="Round" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
+		<CurvePen width="0.8" color="ffffffff" color2="ffffffff" gradientcolor="false" dashstyle="Dot" startcap="NoAnchor" endcap="NoAnchor" dashcap="Flat" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
+	</CurveStyle>
+	<CurveStyle id="4" fullname="勘探曲线/刻度尺" width="1">
+		<CurvePen width="0.1" color="ff000000" color2="ffffffff" gradientcolor="false" dashstyle="Solid" startcap="NoAnchor" endcap="NoAnchor" dashcap="Round" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
+		<CurveRulerMark arrangementrule="Count" symid="0" startat="0" stopat="0" count="5" interval="2.5" rotatetype="RelativeTo" rotate="0" samedirection="false" offseth="0" offsetv="-0.2" width="0.2" height="0.4" usesymcolor="true"/>
+		<CurveRulerText arrangementrule="Count" startat="0" stopat="0" count="5" interval="2.5" rotatetype="RelativeTo" rotate="0" samedirection="false" offseth="0" offsetv="-0.95" fontname="宋体" fontstyle="Regular" fontsize="0.5" fontcolor="ffff0000" initvalue="0" decimal="1" valuestep="100"/>
+	</CurveStyle>
+	<CurveStyle id="5" fullname="勘探曲线/地震测线" width="1.0">
+		<CurvePen width="0.3" color="ff000000" color2="ffffffff" gradientcolor="false" dashstyle="Solid" startcap="NoAnchor" endcap="NoAnchor" dashcap="Round" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
+		<CurveEnd type="Text" location="Both" color="ff000000" size="1.0" rotatetype="Along" rotate="0" offseth="0" offsetv="0" fontname="宋体" fontstyle="Regular" usesymcolor="false"/>
+	</CurveStyle>
+	<CurveStyle id="6" fullname="勘探曲线/等值线" width="1">
+		<CurvePen width="0.3" color="ff000000" color2="ffffffff" gradientcolor="false" dashstyle="Solid" startcap="NoAnchor" endcap="NoAnchor" dashcap="Flat" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
+		<ContourValue arrangementrule="Count" count="3" interval="10" offset="0" fontname="宋体" fontstyle="Regular" fontsize="1" fontcolor="ffff0000"/>
+	</CurveStyle>
+	<CurveStyle id="7" fullname="geomap曲线/自定义铁路线" width="1">
+		<CurvePen width="1" color="ff000000" color2="ffffffff" gradientcolor="false" dashstyle="Solid" startcap="NoAnchor" endcap="NoAnchor" dashcap="Round" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
+		<CurvePen width="0.8" color="ffffffff" color2="ffffffff" gradientcolor="false" dashstyle="Custom" customdata="50;50;" startcap="NoAnchor" endcap="NoAnchor" dashcap="Round" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
+	</CurveStyle>
+</CurveStyleLib>

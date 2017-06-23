@@ -1,0 +1,2291 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GraphBase</name>
+    </assembly>
+    <members>
+        <member name="T:Jurassic.Graph.Base.CSizeD">
+            <summary>
+            存储有序浮点数对，通常为矩形的宽度和高度。
+            编写：徐景周，2006.4.10
+            </summary>
+            <remarks>
+            注意：由于CSizeD现在是类，不是结构。故在赋值给其它变量时，最好用new，如：CSizeD szHit = new CPointD( size );
+            否则，如果只是用：CSizeD szHit = size的话(相当于控制权转移)，在后面改变szHit值时，如：szHit.Width = _ptsTmp[0].X;
+            size的值也会随之改变，如同也执行了相同操作：size.Width = _ptsTmp[0].X;，下次再读取size值时就会不对。或者可以直接加用
+            Clone()涵数，可不用每次new的麻烦。jingzhou xu,2006.4.6
+            </remarks>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CSizeD.Width">
+            <summary>
+            宽度
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CSizeD.Height">
+            <summary>
+            高度
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CSizeD.Empty">
+            <summary>
+            表示 CSizeD 类的、成员数据未被初始化的新实例。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.#ctor">
+            <summary>
+            CSizeD构造涵数，无参
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.#ctor(System.Double,System.Double)">
+            <summary>
+            用指定尺寸初始化 CSizeD 类的新实例。
+            </summary>
+            <param name="cx">新 CSizeD 的宽度分量。</param>
+            <param name="cy">新 CSizeD 的高度分量。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.#ctor(Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            从指定的现有 CSizeD 初始化 CSizeD 类的新实例。
+            </summary>
+            <param name="size">从中创建新 CSizeD 的 CSizeD。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.#ctor(System.Drawing.SizeF)">
+            <summary>
+            从指定的现有 SizeF 初始化 CSizeD 类的新实例。
+            </summary>
+            <param name="size">从中创建新 CSizeD 的 SizeF。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.#ctor(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            从指定的 CPointD 初始化 CSizeD 类的新实例。
+            </summary>
+            <param name="pt">从中初始化此 CSizeD 的 CPointD。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.Clone">
+            <summary>
+            复制自身,克隆，用此方法可以直接象使用结构一样，直接复制不用每次忘记new而产生错误。jingzhou xu，2006.4.6
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.toSizeF">
+            <summary>
+            将 CPointD 转换为 PointF
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.IsEquals(Jurassic.Graph.Base.CSizeD,Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            比较两个尺寸是否大致相同
+            </summary>
+            <param name="sz1"></param>
+            <param name="sz2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.IsEquals(Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            比较两个尺寸是否大致相同
+            </summary>
+            <param name="sz"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.op_Addition(Jurassic.Graph.Base.CSizeD,Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            将一个 CSizeD 类实例的宽度和高度与另一个 CSizeD 类实例的宽度和高度相加。
+            </summary>
+            <param name="sz1">要相加的第一个 CSizeD。</param>
+            <param name="sz2">要相加的第二个 CSizeD。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.op_Subtraction(Jurassic.Graph.Base.CSizeD,Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            将一个 CSizeD 类实例的宽度和高度与另一个 CSizeD 类实例的宽度和高度相减。
+            </summary>
+            <param name="sz1">要相减的第一个 CSizeD。</param>
+            <param name="sz2">要相减的第二个 CSizeD。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.op_UnaryNegation(Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            -负数操作符重载
+            </summary>
+            <param name="sz"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.op_Explicit(Jurassic.Graph.Base.CSizeD)~Jurassic.Graph.Base.CPointD">
+            <summary>
+            将指定的 CSizeD 转换为 CPointD。显式类型转换
+            </summary>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.op_Implicit(System.Drawing.SizeF)~Jurassic.Graph.Base.CSizeD">
+            <summary>
+            将指定 SizeF 转换为 CSizeD。
+            </summary>
+            <param name="size">浮点数尺寸</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.op_Implicit(System.Drawing.Size)~Jurassic.Graph.Base.CSizeD">
+            <summary>
+            将指定 Size 转换为 CSizeD。
+            </summary>
+            <param name="size">整数尺寸点</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSizeD.ToString">
+            <summary>
+            把向量输出成字符串
+            </summary>
+            <returns>字符串</returns>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CSizeD.IsEmpty">
+            <summary>
+            获取一个值，该值指示此 CSizeD 是否为空。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CSizeD.WIDTH">
+            <summary>
+            宽度,属性页中修改用，jingzhou xu,2006.4.14
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CSizeD.HEIGHT">
+            <summary>
+            高度，属性页中修改用，jingzhou xu,2006.4.14
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.CMatrix3">
+            <summary>
+            CMatrix3矩阵类，实现+、-、*、/、平移、缩放、旋转等基本操作。
+            </summary>
+            <example>
+            <code>
+            对于简单3X3矩阵用法如下：
+            	CMatrix3 tempMtx = new CMatrix3();
+            	tempMtx.Translate( 10, 10 );
+            //	tempMtx.Scale( 1, 2 );
+            //	tempMtx.Rotate( 45.0f );
+            //	tempMtx.Shear( 2, 3 );
+            	Console.WriteLine(tempMtx);
+            	
+            对于其它NXN矩阵用法如下：
+            	int rows, columns; 
+            	rows =  columns = 4;
+            	CMatrix3 tempMtx = new CMatrix3(rows, columns);
+            	tempMtx.Rotate( 45.0f )
+            	Console.WriteLine(tempMtx);
+            	
+            矩阵内部元素改变如下：
+            	for(int i = 0; i 〈 tempMtx.Rows; i++)
+            	{
+            		for(int j = 0; j 〈 tempMtx.Columns; j++)
+            		{
+            			Console.Write("Matrix[{0}][{1}] : ", i, j);
+            			double input = double.Parse(Console.ReadLine());
+            			tempMtx[i, j] = input;
+            		}
+            	}
+            	
+            矩阵简单运算如下：
+            	CMatrix3 mtx1 = new CMatrix3();
+            	CMatrix3 mtx2 = new CMatrix3();
+            	CMatrix3 resultMtx;
+            	
+            	try
+            	{
+            		// 加
+            		resultMtx = mtx1 + mtx2;
+            		Console.WriteLine(resultMtx);
+            		// 减
+            		resultMtx = mtx1 - mtx2;
+            		Console.WriteLine(resultMtx);
+            		// 乘
+            		resultMtx = mtx1 * mtx2;
+            		Console.WriteLine(resultMtx);
+            		// 常量乘
+            		double constVal = double.Parse(Console.ReadLine());
+            		resultMtx = constVal * mtx1;
+            		Console.WriteLine(resultMtx);
+            		// 除
+            		double constVal = double.Parse(Console.ReadLine());
+            		resultMtx = mtx1 / constVal;
+            		Console.WriteLine(resultMtx);
+            		// 幂
+            		int power = int.Parse(Console.ReadLine());
+            		resultMtx = mtx ^ power;
+            		Console.WriteLine(resultMtx);
+            		// 转置矩阵(transpose)
+            		resultMtx = ~mtx1
+            		Console.WriteLine(resultMtx);
+            		// 反转矩阵(inverse)
+            		resultMtx = !mtx1;
+            		Console.WriteLine(resultMtx);
+            		
+            	}
+            	catch( CMatrixException ex )
+            	{
+            		Console.WriteLine();
+            		Console.WriteLine(ex.Message);
+            		Console.WriteLine();
+            	}
+            </code>
+            </example>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.ToString">
+            <summary>
+            转换为字符串
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.GetHashCode">
+            <summary>
+            获取散列码
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Equals(System.Object)">
+            <summary>
+            两矩阵是否相等
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_Equality(Jurassic.Graph.Base.CMatrix3,Jurassic.Graph.Base.CMatrix3)">
+            <summary>
+            相等
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_Inequality(Jurassic.Graph.Base.CMatrix3,Jurassic.Graph.Base.CMatrix3)">
+            <summary>
+            不等
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_Multiply(Jurassic.Graph.Base.CMatrix3,Jurassic.Graph.Base.CMatrix3)">
+            <summary>
+            两矩阵相乘
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_Multiply(Jurassic.Graph.Base.CMatrix3,System.Double)">
+            <summary>
+            矩阵和常量相乘
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_Multiply(System.Double,Jurassic.Graph.Base.CMatrix3)">
+            <summary>
+            常量和矩阵相乘
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_Division(Jurassic.Graph.Base.CMatrix3,System.Double)">
+            <summary>
+            矩阵除常量
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_ExclusiveOr(Jurassic.Graph.Base.CMatrix3,System.Double)">
+            <summary>
+            矩阵的N次幂，其中N为val
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_Addition(Jurassic.Graph.Base.CMatrix3,Jurassic.Graph.Base.CMatrix3)">
+            <summary>
+            两矩阵相加
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_Subtraction(Jurassic.Graph.Base.CMatrix3,Jurassic.Graph.Base.CMatrix3)">
+            <summary>
+             两矩阵相减
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_OnesComplement(Jurassic.Graph.Base.CMatrix3)">
+            <summary>
+             转置矩阵(transpose)
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_LogicalNot(Jurassic.Graph.Base.CMatrix3)">
+            <summary>
+             反转矩阵(inverse)
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.#ctor">
+            <summary>
+             默认构造涵数
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.#ctor(System.Int32,System.Int32)">
+            <summary>
+             构造函数(传入矩阵行，列数为参数)
+            </summary>
+            <param name="rows"></param>
+            <param name="columns"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.#ctor(System.Drawing.Drawing2D.Matrix)">
+            <summary>
+            从Matrix对象创建。
+            </summary>
+            <param name="matrix"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.SetToIdentity">
+            <summary>
+             初始创建3*3单位矩阵(Identity)
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.VectorMultiply(System.Double[])">
+            <summary>
+            一维向量与矩阵相乘，即每一列元素乘相应一维向量值相加之和(3*3矩阵)
+            [ x y 1] * | Sx Ry 0 | 
+            		   | Rx Sy 0 | = [ Sx*x + Rx*y + Dx, Ry*x + Sy*y + Dy ]
+            		   | Dx Dy 1 |
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.SetShear(System.Double,System.Double)">
+            <summary>
+             切变处理(3*3矩阵)
+            </summary>
+            <param name="rx"></param>
+            <param name="ry"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.SetRotate(System.Double)">
+            <summary>
+             沿X轴旋转处理(3*3矩阵)
+            </summary>
+            <param name="angle"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.SetScale(System.Double,System.Double)">
+            <summary>
+             缩放处理(3*3矩阵)
+            </summary>
+            <param name="sx"></param>
+            <param name="sy"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.SetTranslate(System.Double,System.Double)">
+            <summary>
+             平移处理(3*3矩阵)
+            </summary>
+            <param name="dx"></param>
+            <param name="dy"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.TransformPoints(Jurassic.Graph.Base.CPointD[])">
+            <summary>
+            变换点坐标，公式如下：
+            				| A11 A12 0 |
+            [ x, y, 1 ] *	| A21 A22 0 | = [ x*A11 + y*A21 + A31, x*A12 + y*A22 + A32, 1 ]
+            				| A31 A32 1 |	
+            </summary>
+            <param name="pts">变换点 </param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.TransformPoint(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            变换点坐标，公式如下：
+            				| A11 A12 0 |
+            [ x, y, 1 ] *	| A21 A22 0 | = [ x*A11 + y*A21 + A31, x*A12 + y*A22 + A32, 1 ]
+            				| A31 A32 1 |	
+            </summary>
+            <param name="pt">变换点</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Determinant">
+            <summary>
+             determinent
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Adjoint">
+            <summary>
+             伴随矩阵
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Minor(System.Int32,System.Int32)">
+            <summary>
+             returns a minor of a matrix with respect to an element
+            </summary>
+            <param name="row"></param>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.IsIdentity">
+            <summary>
+             矩阵是否为单位矩阵
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.IsInvertible">
+            <summary>
+             矩阵是否是可逆转的
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Reset">
+            <summary>
+             复位3*3单位矩阵(Identity)
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Clear">
+            <summary>
+             3*3矩阵元素清0
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Invert">
+            <summary>
+            如果此 CMatrix3 对象是可逆转的，则逆转该对象。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.ToMatrix">
+            <summary>
+            返回一个GDI+的Matrix对象。
+            </summary>
+            <returns>GDI+的Matrix对象</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.op_Implicit(System.Drawing.Drawing2D.Matrix)~Jurassic.Graph.Base.CMatrix3">
+            <summary>
+            将指定 System.Drawing.Drawing2D.Matrix 转换为 CMatrix3
+            </summary>
+            <param name="matrix">要转换的 System.Drawing.Drawing2D.Matrix 。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.CopyFrom(Jurassic.Graph.Base.CMatrix3)">
+            <summary>
+            从一个矩阵拷贝数据到自身
+            </summary>
+            <param name="matrix">拷贝的源矩阵</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Multiply(Jurassic.Graph.Base.CMatrix3,System.Drawing.Drawing2D.MatrixOrder)">
+            <summary>
+            自身与一个矩阵相乘
+            </summary>
+            <param name="matrix">要乘的矩阵</param>
+            <param name="order"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Translate(System.Double,System.Double,System.Drawing.Drawing2D.MatrixOrder)">
+            <summary>
+            矩阵平移
+            </summary>
+            <param name="dx"></param>
+            <param name="dy"></param>
+            <param name="order"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Rotate(System.Double,System.Drawing.Drawing2D.MatrixOrder)">
+            <summary>
+            矩阵旋转
+            </summary>
+            <param name="fAngle"></param>
+            <param name="order"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.RotateAt(System.Double,Jurassic.Graph.Base.CPointD,System.Drawing.Drawing2D.MatrixOrder)">
+            <summary>
+            按指定的顺序将沿指定点的顺时针旋转应用到该 CMatrix3 对象。
+            </summary>
+            <param name="angle">旋转角度。</param>
+            <param name="point">表示旋转中心的 CPointD 对象。</param>
+            <param name="order">一个 MatrixOrder 枚举，它指定应用旋转的顺序（追加或预先计算）。 </param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrix3.Scale(System.Double,System.Double,System.Drawing.Drawing2D.MatrixOrder)">
+            <summary>
+            矩阵缩放
+            </summary>
+            <param name="sx"></param>
+            <param name="sy"></param>
+            <param name="order"></param>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CMatrix3.Item(System.Int32,System.Int32)">
+            <summary>
+             矩阵元素值
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CMatrix3.Rows">
+            <summary>
+             矩阵行数
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CMatrix3.Columns">
+            <summary>
+             矩阵列数
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.CMatrixException">
+            <exclude/>
+            <summary>
+             矩阵异常类
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrixException.#ctor">
+            <summary>
+            矩阵异常构造涵数，无参
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrixException.#ctor(System.String)">
+            <summary>
+            矩阵异常构造涵数，单参
+            </summary>
+            <param name="Message">解释异常原因的错误信息</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CMatrixException.#ctor(System.String,System.Exception)">
+            <summary>
+            矩阵异常构造涵数，双参
+            </summary>
+            <param name="Message">解释异常原因的错误信息</param>
+            <param name="InnerException">导致当前异常的异常。如果 innerException 参数不是空引用（在 Visual Basic 中为 Nothing），则在处理内部异常的 catch 块中引发当前异常。</param>
+        </member>
+        <member name="T:Jurassic.Graph.Base.TokenKind">
+            <summary>
+            字符类型
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.TokenKind.Unknown">
+            <summary>
+            未知
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.TokenKind.Word">
+            <summary>
+            单词
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.TokenKind.Number">
+            <summary>
+            数字
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.TokenKind.QuotedString">
+            <summary>
+            双引号
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.TokenKind.WhiteSpace">
+            <summary>
+            空格或Tab
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.TokenKind.Symbol">
+            <summary>
+            特殊符号
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.TokenKind.EOL">
+            <summary>
+            行结束
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.TokenKind.EOF">
+            <summary>
+            文件结束
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.Token">
+            <summary>
+            字符标记
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.Token.#ctor(Jurassic.Graph.Base.TokenKind,System.String,System.Int32,System.Int32)">
+            <summary>
+            构造
+            </summary>
+            <param name="kind"></param>
+            <param name="value"></param>
+            <param name="line"></param>
+            <param name="column"></param>
+        </member>
+        <member name="P:Jurassic.Graph.Base.Token.Column">
+            <summary>
+            列
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.Token.Kind">
+            <summary>
+            字符类型
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.Token.Line">
+            <summary>
+            行
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.Token.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.StringTokenizer">
+            <summary>
+            StringTokenizer解析字符串或流到标记。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.#ctor(System.IO.TextReader)">
+            <summary>
+            构造
+            </summary>
+            <param name="reader"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.#ctor(System.String)">
+            <summary>
+            构造
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.Reset">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.LA(System.Int32)">
+            <summary>
+            获取当前位置偏移后的字符
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.Consume">
+            <summary>
+            跳过
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.CreateToken(Jurassic.Graph.Base.TokenKind,System.String)">
+            <summary>
+            创建Token
+            </summary>
+            <param name="kind"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.CreateToken(Jurassic.Graph.Base.TokenKind)">
+            <summary>
+            创建Token
+            </summary>
+            <param name="kind"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.Next">
+            <summary>
+            下一个Token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.StartRead">
+            <summary>
+            保存读取点位置以便CreateToken能使用它们
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.ReadWhitespace">
+            <summary>
+            读所有空白 (不包括新行)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.ReadNumber">
+            <summary>
+            读取数字，数字可以是: DIGIT + ("." DIGIT*) + ("-" DIGIT*)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.ReadWord">
+            <summary>
+            reads word. Word contains any alpha character or _
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.ReadString">
+            <summary>
+            reads all characters until next " is found.
+            If "" (2 quotes) are found, then they are consumed as
+            part of the string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.StringTokenizer.IsSymbol(System.Char)">
+            <summary>
+            检查字符c是否在指定特殊字符串中.
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.StringTokenizer.SymbolChars">
+            <summary>
+            获取和设置指定特殊符号TokenKind.Symbol
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.StringTokenizer.IgnoreWhiteSpace">
+            <summary>
+            为真，空格和Tab将被忽略，但字符串中EOL和双引号中空格仍将保留。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.StringTokenizer.IgnoreSymbol">
+            <summary>
+            为真，指定特殊符号将被忽略，但字符串中EOL和双引号中特殊字符仍将保留。
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.jGMCurveParall">
+            <summary>
+            构造曲线的平行线算法。
+            多种平行线生成方法：Intersect、Mix、Cut。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveParall.Parall_Intersect(System.Collections.IList,System.Single,System.Collections.IList)">
+            <summary>
+            平行线算法,对于连接点偏移采用交点
+            </summary>
+            <param name="lstPts">原始曲线点数组</param>
+            <param name="fOffset">平行偏移量</param>
+            <param name="lstPtsParallel">偏移后的曲线点数组</param>
+            <returns>处理成功,返回true,否则返回false</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveParall.Parall_Mix(System.Collections.IList,System.Single,System.Collections.IList)">
+            <summary>
+            平行线算法,对于连接点偏移采用两个方向偏移,中间按照偏移距离插值
+            </summary>
+            <param name="lstPts">原始曲线点数组</param>
+            <param name="fOffset">平行偏移量</param>
+            <param name="lstPtsParallel">偏移后的曲线点数组</param>
+            <returns>处理成功,返回true,否则返回false</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveParall.Parall_Cut(System.Collections.IList,System.Single,System.Collections.IList)">
+            <summary>
+            平行线算法,对于连接点偏移采用两个方向偏移,直接连接
+            </summary>
+            <param name="lstPts">原始曲线点数组</param>
+            <param name="fOffset">平行偏移量</param>
+            <param name="lstPtsParallel">偏移后的曲线点数组</param>
+            <returns>处理成功,返回true,否则返回false</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveParall._OffsetPntEx(Jurassic.Graph.Base.CPointD,System.Double,System.Double,System.Double)">
+            <summary>
+            计算偏移
+            </summary>
+            <param name="orgPoint">原始点</param>
+            <param name="OffsetAngle">偏移角度</param>
+            <param name="OffsetH">切线防线的偏移量</param>
+            <param name="OffsetV">法向方向的偏移量</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveParall._CalcSinCos(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Double@,System.Double@)">
+            <summary>
+            计算矢量线段的正弦余弦值
+            </summary>
+            <param name="pt1">矢量线段的起点坐标</param>
+            <param name="pt2">矢量线段的终点坐标</param>
+            <param name="SinX">矢量线段的正弦值</param>
+            <param name="CosX">矢量线段的余弦值</param>
+            <returns>正常时返回true，出错时返回false</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveParall._OffsetPnt(Jurassic.Graph.Base.CPointD,System.Double,System.Double,System.Double)">
+            <summary>
+            指定的基准点按给定的方向偏移len的新点的坐标
+            </summary>
+            <param name="pt">原始点坐标</param>
+            <param name="len">偏移距离</param>
+            <param name="SinX">偏移方向的正弦值</param>
+            <param name="CosX">偏移方向的余弦值</param>
+            <returns>偏移后的新坐标</returns>
+            备注:算法:设直线的基准点坐标为p(x0, y0)，直线的倾角为
+            	  alpha，插入点与基准点的距离为len，则：
+            		x = x0 + cos(alpha) * len;
+            		y = y0 + sin(alpha) * len;
+            
+        </member>
+        <member name="T:Jurassic.Graph.Base.CPointD">
+            <summary>
+            表示在二维平面中定义点的、浮点 x 和 y 坐标的有序对。
+            编写：徐景周，2006.4.10
+            </summary>
+            <remarks>
+            注意：由于CPointD现在是类，不是结构。故在赋值给其它变量时，最好用new，如：CPointD ptHit = new CPointD( rect.TopLeft );
+            否则，如果只用：CPointD ptHit = pt的话(相当于控制权转移)，在后面改变ptHit值时，如：ptHit.X = _ptsTmp[0].X;
+            pt的值也会随之改变，如同也执行了相同操作：pt.X = _ptsTmp[0].X;，下次再读取pt值时就会不对。或者可以直接加用
+            Clone()涵数，可不用每次new的麻烦。jingzhou xu,2006.4.6
+            </remarks>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CPointD.X">
+            <summary>
+            CPointD点水平方向位置
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CPointD.Y">
+            <summary>
+            CPointD点垂直方向位置
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CPointD.Empty">
+            <summary>
+            表示 CPointD 类的、成员数据未被初始化的新实例。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.#ctor">
+            <summary>
+            		/// CPointD构造涵数，无参
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.#ctor(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            从指定的现有 CPointD 初始化 CPointD 类的新实例。
+            </summary>
+            <param name="pt">从中创建新 CPointD 的 CPointD。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.#ctor(System.Drawing.PointF)">
+            <summary>
+            从指定的现有 PointF 初始化 CPointD 类的新实例。
+            </summary>
+            <param name="pt">从中创建新 CPointD 的 PointF。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.#ctor(Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            从指定的 SizeD 初始化 CPointD 类的新实例。
+            </summary>
+            <param name="size">从中初始化此 CPointD 的 SizeD。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.#ctor(System.Double,System.Double)">
+            <summary>
+            用指定坐标初始化 CPointD 类的新实例。
+            </summary>
+            <param name="x">该点的水平位置。</param>
+            <param name="y">该点的垂直位置。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.Clone">
+            <summary>
+            复制自身,克隆，用此方法可以直接象使用结构一样，直接复制不用每次忘记new而产生错误。jingzhou xu，2006.4.6
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.Set(System.Double,System.Double)">
+            <summary>
+            为CPointD赋新值
+            </summary>
+            <param name="x">点水平位置</param>
+            <param name="y">点垂直位置</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.toPointF">
+            <summary>
+            将 CPointD 转换为 PointF
+            </summary>
+            <returns>转换后新值。</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.toPoint">
+            <summary>
+            将 CPointD 转换为 Point
+            </summary>
+            <returns>转换后新值。</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.Offset(System.Double,System.Double)">
+            <summary>
+            将CPointD偏移到指定位置。
+            </summary>
+            <param name="x">点水平位置</param>
+            <param name="y">点垂直位置</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.Offset(Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            将CPointD偏移到指定位置。
+            </summary>
+            <param name="size">点偏移到指定大小的位置</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.IsEquals(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            比较两个点是否大致重合
+            </summary>
+            <param name="pt1">第一个点</param>
+            <param name="pt2">第二个点</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.IsEquals(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            比较给定的 CPointD 对象是否和此 CPointD 对象大致重合
+            </summary>
+            <param name="pt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_Addition(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            将 CPointD 平移给定 SizeD
+            </summary>
+            <param name="p">平移点</param>
+            <param name="s">要平移的大小</param>
+            <returns>平移后新点</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_Addition(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            将 CPointD 平移给定点
+            </summary>
+            <param name="pt1">平移点</param>
+            <param name="pt2">平移到的点位置</param>
+            <returns>平移后新点</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_Subtraction(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            将 CPointD 平移给定 SizeD 的负数。
+            </summary>
+            <param name="p">平移点</param>
+            <param name="s">要平移到的大小</param>
+            <returns>平移后新点</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_Subtraction(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            将 CPointD 平移给定 CPointD 的负数。
+            </summary>
+            <param name="pt1">平移点</param>
+            <param name="pt2">要平移到的点</param>
+            <returns>平移后新点</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_Multiply(Jurassic.Graph.Base.CPointD,System.Double)">
+            <summary>
+            向量乘以标量：向量 X 标量
+            </summary>
+            <param name="pt">向量</param>
+            <param name="scale">标量</param>
+            <returns>向量</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_Multiply(System.Double,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            标量乘以向量：标量 X  向量
+            </summary>
+            <param name="scale">标量</param>
+            <param name="pt">向量</param>
+            <returns>向量</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_Division(Jurassic.Graph.Base.CPointD,System.Double)">
+            <summary>
+            向量除以标量：向量 / 标量
+            </summary>
+            <param name="pt">向量</param>
+            <param name="scale">标量</param>
+            <returns>向量</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_UnaryNegation(Jurassic.Graph.Base.CPointD)">
+            <summary>
+             负数(-)操作符重载
+            </summary>
+            <param name="p">点</param>
+            <returns>新点</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_Implicit(System.Drawing.PointF)~Jurassic.Graph.Base.CPointD">
+            <summary>
+            将指定 PointF 转换为 CPointD。
+            </summary>
+            <param name="pt">浮点数坐标点</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.op_Implicit(System.Drawing.Point)~Jurassic.Graph.Base.CPointD">
+            <summary>
+            将指定 Point 转换为 CPointD。
+            </summary>
+            <param name="pt">整数坐标点</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointD.ToString">
+            <summary>
+            把向量输出成字符串
+            </summary>
+            <returns>字符串</returns>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CPointD.IsEmpty">
+            <summary>
+            获取一个值，该值指示此 CPointD 是否为空。
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.jGMCurveSplit">
+            <summary>
+            分割曲线算法。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveSplit.Split(System.Collections.IList,System.Collections.IList,System.Collections.IList)">
+            <summary>
+            多个分割体分割曲线
+            </summary>
+            <param name="lstPts">分割的曲线点数组列表</param>
+            <param name="SplitItems">分割体数组</param>
+            <param name="lstCurves">分割后的曲线数组列表</param>
+            <returns>分割成功,返回true,否则返回false</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveSplit.Split(System.Collections.IList,System.Double,System.Double,Jurassic.Graph.Base.CPointDCollections,Jurassic.Graph.Base.CPointDCollections)">
+            <summary>
+            单个分割体多层分割曲线
+            </summary>
+            <param name="lstPts">分割的曲线点数组列表</param>
+            <param name="splitPos">分割体位置</param>
+            <param name="splitlength">分割体宽度</param>
+            <param name="lstFrontPts">分割后,分割体前的曲线点数组</param>
+            <param name="lstRearPts">分割后,分割体后的曲线点数组</param>
+            <returns>分割成功,返回true,否则返回false</returns>
+        </member>
+        <member name="T:Jurassic.Graph.Base.jGMC">
+            <summary>
+            定义一些几何常量。
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.jGMC.EPSLN">
+            <summary>
+            小的浮点数，用于计算浮点数误差
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.jGMC.PI">
+            <summary>
+            圆周率
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.jGMC.FORTPI">
+            <summary>
+            四分之一圆周率
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.jGMC.HALFPI">
+            <summary>
+            二分之一圆周率
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.jGMC.TWOPI">
+            <summary>
+            两倍的圆周率
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.jGMC.D2R">
+            <summary>
+            度到弧度的转换因子
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.jGMC.S2R">
+            <summary>
+            秒到弧度的转换因子
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.jGMC.R2D">
+            <summary>
+            弧度到度的转换因子
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.jGMC.R2S">
+            <summary>
+            弧度到秒的转换因子
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.CRectD">
+            <summary>
+            存储一组浮点数，共四个，表示一个矩形的位置和大小。
+            编写：徐景周，2006.4.10
+            </summary>
+            <remarks>
+            注意：由于CRectD现在是类，不是结构。故在赋值给其它变量时，最好用new，如：CRectD rctBnd = new CRectD( Bounds );
+            否则，如果只用：CRectD rctBnd = Bounds的话(相当于控制权转移)，在后面改变rctBnd值时，如：rctBnd.Offset( -new CPointD(100, 100) );
+            Bounds的值也会随之改变，如同也执行了相同操作：Bounds.Offset( -new CPointD(100, 100) )，下次再读取Bounds值时就会不对。或者可以直接加用
+            Clone()涵数，可不用每次new的麻烦。jingzhou xu,2006.4.6
+            </remarks>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CRectD.X">
+            <summary>
+            矩形左上角的 x 坐标。
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CRectD.Y">
+            <summary>
+            矩形左上角的 y 坐标。
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CRectD.Width">
+            <summary>
+            矩形的宽度。
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CRectD.Height">
+            <summary>
+            矩形的高度。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.#ctor">
+            <summary>
+            CRectD构造涵数
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.#ctor(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            用指定的位置和大小初始化 CRectD 类的新实例。
+            </summary>
+            <param name="location">它表示矩形区域的左上角。</param>
+            <param name="size">它表示矩形区域的宽度和高度。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            用指定的位置和大小初始化 CRectD 类的新实例。
+            </summary>
+            <param name="x">矩形左上角的 x 坐标。</param>
+            <param name="y">矩形左上角的 y 坐标。</param>
+            <param name="width">矩形的宽度。</param>
+            <param name="height">矩形的高度。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.#ctor(Jurassic.Graph.Base.CRectD)">
+            <summary>
+            从指定的现有 CRectD 初始化 CRectD 类的新实例。
+            </summary>
+            <param name="rect">从中创建新 CRectD 的 CRectD。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.#ctor(System.Drawing.RectangleF)">
+            <summary>
+            从指定的现有 RectangleF 初始化 CRectD 类的新实例。
+            </summary>
+            <param name="rect">从中创建新 CRectD 的 RectangleF。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Clone">
+            <summary>
+            复制自身,克隆，用此方法可以直接象使用结构一样，直接复制不用每次忘记new而产生错误。jingzhou xu,2006.4.6
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.toRectangleF">
+            <summary>
+            将 CRectD 转换为 RectangleF
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.toRectangle">
+            <summary>
+            将 CRectD 转换为 Rectangle
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.IsEquals(Jurassic.Graph.Base.CRectD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            比较两个矩形是否大致相同
+            </summary>
+            <param name="rect1"></param>
+            <param name="rect2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.IsEquals(Jurassic.Graph.Base.CRectD)">
+            <summary>
+            比较两个矩形是否大致相同
+            </summary>
+            <param name="rect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Contains(System.Double,System.Double)">
+            <summary>
+            确定指定的点是否包含在此 CRectD 内。
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Contains(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            确定指定的点是否包含在此 CRectD 内。
+            </summary>
+            <param name="pt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Contains(Jurassic.Graph.Base.CRectD)">
+            <summary>
+            确定 rect 表示的矩形区域是否完全包含在此 CRect 内。
+            </summary>
+            <param name="rect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.CopyRect(Jurassic.Graph.Base.CRectD)">
+            <summary>
+            将指定矩形赋值到当前矩形,jingzhou xu,2006.4.10
+            </summary>
+            <param name="srcRect">源矩形</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.FromLTRB(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            创建一个 CRectD ，它的左上角和右下角都位于指定位置。
+            </summary>
+            <param name="left"></param>
+            <param name="top"></param>
+            <param name="right"></param>
+            <param name="bottom"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Inflate(Jurassic.Graph.Base.CRectD,System.Double,System.Double)">
+            <summary>
+            创建并返回指定 CRectD 的放大副本。该副本被放大指定的量。不修改原始矩形。
+            </summary>
+            <param name="rect">要复制的 CRectD。不修改此矩形。</param>
+            <param name="x">矩形副本的水平放大量。</param>
+            <param name="y">矩形副本的垂直放大量。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Inflate(System.Double,System.Double)">
+            <summary>
+            将此 CRectD 放大指定量。
+            </summary>
+            <param name="x">水平放大量</param>
+            <param name="y">垂直放大量</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Inflate(Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            将此 CRectD 放大指定量。
+            </summary>
+            <param name="size">此矩形的放大量。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Intersect(Jurassic.Graph.Base.CRectD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            两矩形交集
+            </summary>
+            <param name="a">矩形一</param>
+            <param name="b">矩形二</param>
+            <returns>交集</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Intersect(Jurassic.Graph.Base.CRectD)">
+            <summary>
+            将此 CRectD 替换为其自身与指定的 CRectD 的交集。
+            </summary>
+            <param name="rect"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.IntersectsWith(Jurassic.Graph.Base.CRectD)">
+            <summary>
+            确定此矩形是否与 rect 相交。jingzhou xu,2006.4.10
+            </summary>
+            <param name="rect">要测试的矩形。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.IntersectsWith(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            确定点是否在矩形中
+            </summary>
+            <param name="pnt">要测试的点</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.NormalizeRect">
+            <summary>
+            矩形正规化,jingzhou xu
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Offset(System.Double,System.Double)">
+            <summary>
+            将此矩形的位置调整指定的量。
+            </summary>
+            <param name="x">水平偏移该位置的量。</param>
+            <param name="y">垂直偏移该位置的量。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Offset(Jurassic.Graph.Base.CSizeD)">
+            <summary>
+            将此矩形的位置调整 CSizeD 指定的量。
+            </summary>
+            <param name="size">偏移该位置的量</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Offset(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            将此矩形的位置调整指定的量。
+            </summary>
+            <param name="pos">偏移该位置的量。</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Union(Jurassic.Graph.Base.CRectD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            创建第三个矩形，它是能够同时包含形成并集的两个矩形的可能的最小矩形。
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.Union(Jurassic.Graph.Base.CRectD)">
+            <summary>
+            将此 CRectD 替换为其自身与指定的 CRectD 的并集。
+            </summary>
+            <param name="rect"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.GetAngleRect(System.Single,System.Drawing.PointF)">
+            <summary>
+            获取矩形(如图*号构成的矩形)以某点为基准点(如图#)旋转以后，
+            四角构成的包容矩形(如图的实线矩形) 张潋 20050511
+            
+               -------*---------------
+               |    *	*            |
+               |  *	      *          |
+               |*	        *        |
+               |  *           *      |
+               |    *     #     *    |
+               |      *           *  |
+               |        *           *|
+               |          *       *  |
+               |            *   *    |
+               |______________*______|
+            </summary>
+            <param name="Angle">旋转角度</param>
+            <param name="AnglePoint">旋转的基准点</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.GetAngleRect(System.Double)">
+            <summary>
+            获取矩形(如图*号构成的矩形)以某点为基准点(如图#)旋转以后，
+            四角构成的包容矩形(如图的实线矩形)
+            </summary>
+            <param name="angle">旋转角度</param>
+            <returns>旋转以后的包容矩形</returns>
+            <remarks>从矩形中心旋转</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CRectD.op_Implicit(System.Drawing.RectangleF)~Jurassic.Graph.Base.CRectD">
+            <summary>
+            将指定 RectangleF 转换为 CRectD。
+            </summary>
+            <param name="rect">RectangleF矩形</param>
+            <returns>CRectD矩形</returns>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.Empty">
+            <summary>
+            表示 CSizeD 类的、成员数据未被初始化的新实例。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.IsEmpty">
+            <summary>
+            测试此 CRectD 的所有数值属性是否都具有零值。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.Location">
+            <summary>
+            获取或设置此 CRectD 类左上角的坐标。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.Size">
+            <summary>
+            获取或设置此 CRectD 的大小。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.Left">
+            <summary>
+            获取此 CRectD 左边缘的 x 坐标。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.Top">
+            <summary>
+            获取此 CRectD 上边缘的 y 坐标。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.Right">
+            <summary>
+            获取此 CRect 右边缘的 x 坐标。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.Bottom">
+            <summary>
+            获取此 CRectD 下边缘的 y 坐标。
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.TopLeft">
+            <summary>
+            获取此 CRectD 左上角
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.TopRight">
+            <summary>
+            右上角
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.BottomRight">
+            <summary>
+            获取此 CRectD 右下角
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.BottomLeft">
+            <summary>
+            左下角
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CRectD.CenterPoint">
+            <summary>
+            中心点
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.jGMA">
+            <summary>
+            几何算法类,实现常用的几何运算。
+            </summary>
+            <remarks>
+            <code>
+            1、涉及到的形状：pnt点、Sect线段、Line直线、Polyline折线、Polygon多边形、Rect矩形、Circle圆。
+            2、在判断类方法中，On在...上；In在...内；Cross相交
+            3、所有IsXXXInYYY表示形状XXX完全在形状YYY内。
+            4、所有IsXXXCrossYYY表示形状XXX完全在形状YYY内，或相交。
+            5、所有的方法都不进行包容矩形的初步判断，如果需要，在调用方法前自行进行包容矩形判断。if( rcBoundA.IntersectsWith( rcBoundB ) == true ) Method(...);
+            6、如果方法中带有包容矩形参数，如果是null，方法内部计算矩形，可能进行包容矩形初步判断；
+            	如果是错误的矩形，会导致结果不确定
+            7、用IList代表点数组（Polyline、Polygon），使用者自己维护点数组含义的正确性，集合内必须是CPointD、Polyline的Count大于1、Polygon的Count大于2。
+            8、如果不正确地使用了IList，可能会导致异常（InvalidCastException、IndexOutOfRangeException、NullReferenceException）
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Distance(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            计算两点(x1,y1),(x2,y2)之间的距离
+            </summary>
+            <param name="x1">点一水平位置</param>
+            <param name="y1">点一垂直位置</param>
+            <param name="x2">点二水平位置</param>
+            <param name="y2">点二垂直位置</param>
+            <returns>距离</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Distance(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            计算两点pt1,pt2之间的距离
+            </summary>
+            <param name="pt1">点一</param>
+            <param name="pt2">点二</param>
+            <returns>距离</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Distance2(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            计算两点pt1,pt2之间的距离平方。有时判断长短，不用开方即可。
+            </summary>
+            <param name="pt1">点一</param>
+            <param name="pt2">点二</param>
+            <returns>计算两点pt1,pt2之间的距离平方</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Dist_Pnt2Line(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+             点与直线的距离
+            </summary>
+            <param name="ptCurrent">待计算的目标点</param>
+            <param name="ptStart">直线起点</param>
+            <param name="ptEnd">直线终点</param>
+            <returns>点与直线的距离</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Dist_Pnt2Sect(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            求点到线段的最近距离
+            </summary>
+            <param name="ptCurrent">待计算的目标点</param>
+            <param name="ptStart">直线起点</param>
+            <param name="ptEnd">直线终点</param>
+            <returns>点到线段的最近距离</returns>
+            <remarks>如果点到直线的垂点不在线段内，取到两个端点的最短距离</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Dist_Pnt2Polyline(Jurassic.Graph.Base.CPointD,System.Collections.IList)">
+            <summary>
+            求点与折线的最近距离
+            </summary>
+            <param name="ptCurrent">待计算的目标点</param>
+            <param name="Polyline">折线有序点数组</param>
+            <returns>点与折线的最近距离</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Dist_Pnt2Polygon(Jurassic.Graph.Base.CPointD,System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            求点与折线的最近距离
+            </summary>
+            <param name="ptCurrent">待计算的目标点</param>
+            <param name="Polygon">折线、矩形、多边形有序点数组</param>
+            <param name="rcBound">Polygon的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>点与折线、曲线、多边形的最近距离</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Angle_Line(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            计算直线pt1pt2的方向倾角
+            </summary>
+            <param name="pt1">起始点坐标</param>
+            <param name="pt2">结束点坐标</param>
+            <returns>
+            <code>
+            以弧度计量的角度 θ，它满足 (-π, π)，而且 tan(θ) = y/ x，其中 (x, y) 是笛卡尔平面上的点。请看下面： 
+            如果 (x, y) 在第一象限，则 (0, π/2)。 
+            如果 (x, y) 在第二象限，则 (π/2, π)。 
+            如果 (x, y) 在第三象限，则 (-π,  -π/2)。 
+            如果 (x, y) 在第四象限，则 (-π/2 0)。
+            </code>
+            </returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Angle_2Line(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            计算直线ln1和直线ln2的夹角
+            </summary>
+            <param name="ln1Start">直线1的起始点坐标</param>
+            <param name="ln1End">直线1的结束点坐标</param>
+            <param name="ln2Start">直线2的起始点坐标</param>
+            <param name="ln2End">直线2的结束点坐标</param>
+            <returns>以弧度计量的角度 θ，它满足 (-π, π)，
+            如果 L1到L2为逆时针，则 (0, π)。 
+            如果 L1到L2为顺时针，则 (-π, 0)。
+            </returns> 
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.SectDirection(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            计算矢量线段pt1pt2的方向倾角
+            </summary>
+            <param name="pt1">起始点坐标</param>
+            <param name="pt2">结束点坐标</param>
+            <returns>矢量线段pt1pt2与水平方向的夹角，单位度（0,360）</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.TanDirection(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            计算线段pt1pt2与线段pt2pt3的切线方向
+            </summary>
+            <param name="pt1"></param>
+            <param name="pt2"></param>
+            <param name="pt3"></param>
+            <returns>切线与水平方向夹角,单位度</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Side_Inflexion(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            折线段的拐向判断
+            </summary>
+            <param name="ptStart">折线段的第一个端点</param>
+            <param name="ptCorner">折线段的拐点</param>
+            <param name="ptEnd">折线段的第二个端点</param>
+            <returns>返回值：-1--拐向在左侧；0--没有拐向，三点共线；1--拐向在右侧。</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Side_PntOnLine(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            判断点在直线的哪一边
+            </summary>
+            <param name="ptCurrent">目标点</param>
+            <param name="ptStart">直线起始点</param>
+            <param name="ptEnd">直线终止点</param>
+            <returns>返回值： -1--左侧；0--在线上；1--右侧。</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Side_PntOnPolyline(Jurassic.Graph.Base.CPointD,System.Collections.IList)">
+            <summary>
+            判断点在区线的哪一边。先找出点到曲线数组中那一线段距离最近，再利用Side_Inflexion()判断点在线段那一边
+            </summary>
+            <param name="ptCurrent">目标点</param>
+            <param name="Polyline">曲线有序点数组</param>
+            <returns>返回值： -1--左侧；0--在线上；1--右侧。</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Side_PolylineOnLine(System.Collections.IList,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            判断折线在直线的哪一边
+            </summary>
+            <param name="Polyline">曲线有序点数组</param>
+            <param name="ptStart">直线起始点</param>
+            <param name="ptEnd">直线终止点</param>
+            <returns>返回值： -1--左侧；0--交叉；1--右侧。</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Side_RectOnLine(Jurassic.Graph.Base.CRectD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            判断矩形在直线的哪一侧
+            </summary>
+            <param name="rect">待判断的矩形</param>
+            <param name="ptStart">直线起始点</param>
+            <param name="ptEnd">直线终止点</param>
+            <returns>返回值： -1--左侧；0--交叉；1--右侧。</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.Side_SectOnLine(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            判断线段在直线的哪一侧
+            </summary>
+            <param name="ptSect1">线段起始点</param>
+            <param name="ptSect2">线段终止点</param>
+            <param name="ptLn1">直线起始点</param>
+            <param name="ptLn2">直线终止点</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPntOnPnt(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            点是否在点上
+            </summary>
+            <param name="pt1">目标点</param>
+            <param name="pt2">比较点</param>
+            <returns>true：两点重合</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPntOnLine(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            点是否在直线上
+            </summary>
+            <param name="ptCurrent">目标点</param>
+            <param name="ptStart">直线上的起始点2</param>
+            <param name="ptEnd">直线上的终止点</param>
+            <returns>点是否在直线上</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPntOnSect(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+             点是否在线段上
+            </summary>
+            <param name="ptCurrent">目标点</param>
+            <param name="ptStart">线段上的起始点2</param>
+            <param name="ptEnd">线段上的终止点</param>
+            <returns>点是否在线段上</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPntOnPolyline(Jurassic.Graph.Base.CPointD,System.Collections.IList)">
+            <summary>
+            点是否在曲线上
+            </summary>
+            <param name="ptCurrent">目标点</param>
+            <param name="Polyline">曲线</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPntInRect(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断点是否在矩形内部
+            </summary>
+            <param name="ptCurrent">点</param>
+            <param name="rect">矩形</param>
+            <returns>矩形是否包含点</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPntInCircle(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Double)">
+            <summary>
+            点是否在圆内，计算圆心到该点的距离，如果小于等于半径则该点在圆内。 
+            </summary>
+            <param name="ptCurrent">判断点坐标</param>
+            <param name="ptCirCenter">圆心</param>
+            <param name="radius">圆半径</param>
+            <returns>点是否在圆内</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPntInPolygon(Jurassic.Graph.Base.CPointD,System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断点是否在多边形中:
+            </summary>
+            <param name="ptCurrent">点p</param>
+            <param name="Polygon">多边形顶点的有序数组</param>
+            <param name="rcBound">Polygon的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>点是否在多边形区域内</returns>
+            <remarks>
+            以点P为端点，向左方作射线L，由于多边形是有界的，所以射线L的左端一定在多边形外，	
+            考虑沿着L从无穷远处开始自左向右移动，遇到和多边形的第一个交点的时候，进入
+            到了多边形的内部，遇到第二个交点的时候，离开了多边形，……
+            所以很容易看出当L和多边形的交点数目C是奇数的时候，P在多边形内，是偶数的话P在多边形外。
+            </remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsSectCrossSect(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            两线段是否相交
+            </summary>
+            <param name="ptAStart">线段A的起始点</param>
+            <param name="ptAEnd">线段A的终止点</param>
+            <param name="ptBStart">线段B起始点</param>
+            <param name="ptBEnd">线段B终止点</param>
+            <returns>线段是否相交</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsSectCrossLine(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            线段与直线相交
+            </summary>
+            <param name="ptAStart">线段起始点</param>
+            <param name="ptAEnd">线段终止点</param>
+            <param name="ptBStart">直接起始点</param>
+            <param name="ptBEnd ">直线终止点</param>
+            <returns>线段是否与直线相交</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsSectCrossPolyline(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Collections.IList)">
+            <summary>
+            判断线段是否和折线相交
+            </summary>
+            <param name="ptStart">线段起始点</param>
+            <param name="ptEnd">线段终止点</param>
+            <param name="Polyline">折线顶点的有序数组</param>
+            <returns>线段是否和折线相交</returns>
+            <remarks>一一判断线段是否和组成折线的线段是否相交</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsLineCrossLine(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            判断直线与直线是否相交
+            </summary>
+            <param name="ptAStart">直线A的起始点</param>
+            <param name="ptAEnd">直线A的终止点</param>
+            <param name="ptBStart">直接B起始点</param>
+            <param name="ptBEnd">直线B终止点</param>
+            <returns>直线与直线是否相交</returns>
+            <remarks>对无限延伸的两直线来说，只要两直线不是平行线(重合除外)，必要交点，所以只需判断两直线是否平行既可</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsLineCrossPolyline(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Collections.IList)">
+            <summary>
+            判断直线是否和折线相交
+            </summary>
+            <param name="ptStart">直线的一点</param>
+            <param name="ptEnd">直线的另一点</param>
+            <param name="Polyline">折线顶点的有序数组</param>
+            <returns>直线是否和折线相交</returns>
+            <remarks>一一判断直线是否和组成折线的线段是否相交</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPolylineCrossPolyline(System.Collections.IList,System.Collections.IList)">
+            <summary>
+            判断折线是否与另一个折线相交
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rcBoundA.IntersectsWith( rcBoundB ) == true ) IsPolylineCrossPolyline(...);
+            </code>
+            </summary>
+            <param name="PolylineA">折线A有序点数组</param>
+            <param name="PolylineB">折线B有序点数组</param>
+            <returns>折线是否与另一个折线相交，存在返回真，否则返回假</returns>
+            <remarks>利用IsSectCrossSect涵数分别求折线中每一线段是否与另一个折线存在交点, 假设在使用此方法之前已进行了包容矩形比较</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsSectInRect(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断线段是否在矩形中	
+            </summary>
+            <param name="ptStart">线段起始点</param>
+            <param name="ptEnd">线段终止点</param>
+            <param name="rect">矩形</param>
+            <returns>是否在矩形内</returns>
+            <remarks>两个端点必须都在矩形内</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsSectCrossRect(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断线段是否和矩形相交
+            </summary>
+            <param name="ptStart">线段起始点</param>
+            <param name="ptEnd">线段终止点</param>
+            <param name="rect">矩形</param>
+            <returns>线段是否和矩形相交</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsLineCrossRect(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断直线是否和矩形相交
+            </summary>
+            <param name="ptStart">直线起始点</param>
+            <param name="ptEnd">直线终止点</param>
+            <param name="rect">矩形</param>
+            <returns>直线是否和矩形相交</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPolylineInRect(System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断线段、折线、多边形是否在矩形中。
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rect.IntersectsWith( rcBound ) == true ) IsPolylineInRect(...);
+            </code>
+            </summary>
+            <param name="Polyline">点数组</param>
+            <param name="rect">矩形</param>
+            <returns>是否在矩形内</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPolylineCrossRect(System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断折线是否和矩形相交
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rect.Contains( rcBound ) == true ) true;
+            if( rect.IntersectsWith( rcBound ) == true ) IsPolylineInRect(...);
+            </code>
+            </summary>
+            <param name="Polyline">点数组</param>
+            <param name="rect">矩形</param>
+            <returns>折线是否和矩形相交</returns>
+            <remarks>折线的每一个线段是否和矩形相交</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPolylineInCircle(System.Collections.IList,Jurassic.Graph.Base.CPointD,System.Double)">
+            <summary>
+             判断折线是否在圆内
+            </summary>
+            <param name="Polyline">线段、折线、矩形、多边形的有序点数组坐标</param>
+            <param name="ptCirCenter">圆心</param>
+            <param name="radius">圆半径</param>
+            <returns>折线是否在圆内</returns>
+            <remarks>因为圆是凸集，所以只要判断是否每个顶点都在圆内即可。</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsSectInPolygon(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            线 --〉 多边形
+            <summary>
+            判断线段是否在多边形内
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rcBound.Contains( ptStart ) == true 并且 rcBound.Contains( ptEnd ) ) IsSectInPolygon( ... );
+            </code>
+            </summary>
+            <param name="ptStart">线段起始点</param>
+            <param name="ptEnd">线段终止点</param>
+            <param name="Polygon">多边形顶点的有序数组</param>
+            <param name="rcBound">Polygon的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>线段是否在多边形区域内</returns>
+            <remarks>
+            线段在多边形内的一个必要条件是线段的两个端点都在多边形内，但由于多边形可能为凹，
+            所以这不能成为判断的充分条件。如果线段和多边形的某条边内交（两线段内交是指两线段相交且交点不在两线段的端点），
+            因为多边形的边的左右两侧分属多边形内外不同部分，所以线段一定会有一部分在多边形外。于是我们得到线段在多边
+            形内的第二个必要条件：线段和多边形的所有边都不内交。线段和多边形交于线段的两端点并不会影响线段是否在多边形内；
+            但是如果多边形的某个顶点和线段相交，还必须判断两相邻交点之间的线段是否包含于多边形内部。 因此我们可以先求出所
+            有和线段相交的多边形的顶点，然后按照X-Y坐标排序(X坐标小的排在前面，对于X坐标相同的点，Y坐标小的排在前面，这种
+            排序准则也是为了保证水平和垂直情况的判断正确)，这样相邻的两个点就是在线段上相邻的两交点，如果任意相邻两点的中
+            点也在多边形内，则该线段一定在多边形内。
+            </remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsSectCrossPolygon(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断线段是否和多边形相交
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rcBound.Contains( ptStart ) == true ||  rcBound.Contains( ptEnd ) ) IsSectCrossPolygon( ... );
+            </code>
+            </summary>
+            <param name="ptStart">线段起始点</param>
+            <param name="ptEnd">线段终止点</param>
+            <param name="Polygon">多边形顶点的有序数组</param>
+            <param name="rcBound">Polygon的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>线段是否和多边形相交</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsLineCrossPolygon(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Collections.IList)">
+            <summary>
+            判断直线段是否和多边形相交
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( Side_RectOnLine( rcBound, ptStart, ptEnd ) == 0 ) IsLineCrossPolygon( ... );
+            </code>
+            </summary>
+            <param name="ptStart">直线起始点</param>
+            <param name="ptEnd">直线终止点</param>
+            <param name="Polygon">多边形顶点的有序数组</param>
+            <returns>直线是否和多边形相交</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPolylineInPolygon(System.Collections.IList,System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断折线是否在多边形区域内
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rcPolygonBound.IntersectsWith( rcPolylineBound ) ) IsPolylineInPolygon( ... );
+            </code>
+            </summary>
+            <param name="Polyline">折线顶点有序数组</param>
+            <param name="Polygon">多边形顶点的有序数组</param>
+            <param name="rcPolygonBound">Polygon的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>折线是否在多边形区域内</returns>
+            <remarks>只要判断折线的每条线段是否都在多边形内即可。设折线有m条线段，多边形有n个顶点，则该算法的时间复杂度为O(m*n)。</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPolylineCrossPolygon(System.Collections.IList,System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断折线是否和多边形区域相交
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rcPolygonBound.IntersectsWith( rcPolylineBound ) ) IsPolylineInPolygon( ... );
+            </code>
+            </summary>
+            <param name="Polyline">折线顶点有序数组</param>
+            <param name="Polygon">多边形顶点的有序数组</param>
+            <param name="rcPolygonBound">Polygon的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>折线是否和多边形区域相交</returns>
+            <remarks>只要判断折线的每条线段是否都在多边形内即可。设折线有m条线段，多边形有n个顶点，则该算法的时间复杂度为O(m*n)。</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPolygonInPolygon(System.Collections.IList,System.Collections.IList,Jurassic.Graph.Base.CRectD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+             判断多边形A是否在多边形B区域内
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rcBoundB.Contains( rcBoundA ) ) IsPolygonInPolygon( ... );
+            </code>
+            </summary>
+            <param name="PolygonA">多边形A顶点有序数组</param>
+            <param name="PolygonB">多边形B顶点的有序数组</param>
+            <param name="rcBoundA">多边形A的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <param name="rcBoundB">多边形B的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>多边形是否在多边形区域内</returns>
+            <remarks>只要判断多边形A的折线是否都在多边形B内即可。</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsPolygonCrossPolygon(System.Collections.IList,System.Collections.IList,Jurassic.Graph.Base.CRectD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+             判断多边形A是否和多边形B交叉
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rcBoundA.IntersectsWith( rcBoundB ) ) IsPolygonCrossPolygon( ... );
+            </code>
+            </summary>
+            <param name="PolygonA">多边形A顶点有序数组</param>
+            <param name="PolygonB">多边形B顶点的有序数组</param>
+            <param name="rcBoundA">多边形A的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <param name="rcBoundB">多边形B的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>多边形A是否和多边形B交叉</returns>
+            <remarks>A 在B 内、AB交叉、B 在A 内</remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsRectInRect(Jurassic.Graph.Base.CRectD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断矩形是否在矩形中
+            </summary>
+            <param name="rect1">矩形1</param>
+            <param name="rect2">矩形2</param>
+            <returns>rect1是否包含 reect2</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsRectCrossRect(Jurassic.Graph.Base.CRectD,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断矩形1是否和矩形2相交,jingzhou xu,2006.4.10
+            </summary>
+            <param name="rect1">矩形1</param>
+            <param name="rect2">矩形2</param>
+            <returns>rect1是否和 reect2相交</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsRectInPolygon(Jurassic.Graph.Base.CRectD,System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断矩形是否在多边形内。
+            没有进行初步判断，为加快速度，请在使用此方法之前进行包容矩形比较。
+            <code>
+            if( rcBound.Contains( rect ) ) IsRectInPolygon( ... );
+            </code>
+            </summary>
+            <param name="rect">矩形</param>
+            <param name="Polygon">多边形顶点的有序数组</param>
+            <param name="rcBound">Polygon的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>矩形是否在多边形区域内</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsCircleInRect(Jurassic.Graph.Base.CPointD,System.Double,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断圆是否在矩形中
+            </summary>
+            <param name="ptCirCenter">圆心</param>
+            <param name="radius">圆半径</param>
+            <param name="rect">矩形</param>
+            <returns>矩形是否包含圆</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsCircleInPolygon(Jurassic.Graph.Base.CPointD,System.Double,System.Collections.IList,Jurassic.Graph.Base.CRectD)">
+            <summary>
+            判断圆是否在多边形区域内
+            </summary>
+            <param name="ptCirCenter">圆心</param>
+            <param name="radius">圆半径</param>
+            <param name="Polygon">多边形顶点的有序数组</param>
+            <param name="rcBound">Polygon的包容矩形，如果是null，计算矩形，如果是错误的矩形，会导致结果不确定</param>
+            <returns>圆是否在多边形区域内</returns>
+            <remarks>只要圆心在多边形中，并且计算圆心到多边形的每条边的最短距离，如果该距离大于等于圆半径则该圆在多边形内。
+            </remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.IsCircleInCircle(Jurassic.Graph.Base.CPointD,System.Double,Jurassic.Graph.Base.CPointD,System.Double)">
+            <summary>
+            设两圆为O1,O2，半径分别为r1, r2，要判断O2是否在O1内。先比较r1，r2的大小，
+            如果r1〈r2则O2不可能在O1内；否则如果两圆心的距离大于r1 - r2 ，则O2不在O1内；否则O2在O1内。
+            </summary>
+            <param name="lhsCirCenter">第一个圆圆心</param>
+            <param name="lhsRadius">第一个圆圆半径</param>
+            <param name="rhsCirCenter">第二个圆圆心</param>
+            <param name="rhsRadius">第二个圆圆半径</param>
+            <returns>圆一是否在圆二内</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.CP_Pnt2Sect(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            求点到线段的最近点
+            </summary>
+            <param name="ptCurrent">目标点</param>
+            <param name="ptStart">线段起始点</param>
+            <param name="ptEnd">线段终止点</param>
+            <returns>点到线段的最近交点</returns>
+            <remarks>
+             如果该线段平行于X轴（Y轴），则过点point作该线段所在直线的垂线，垂足很容易求得，然后计算出垂足，
+             如果垂足在线段上则返回垂足，否则返回离垂足近的端点；如果该线段不平行于X轴也不平行于Y轴，则斜率
+             存在且不为0。设线段的两端点为pt1和pt2，斜率为：k = ( pt2.Y - pt1. y ) / (pt2.X - pt1.X );该直线
+             方程为：y = k* ( x - pt1.X) + pt1.Y。其垂线的斜率为 - 1 / k，垂线方程为：y = (-1/k) * (x - point.X) + point.Y。
+             联立两直线方程解得：x = ( k^2 * pt1.X + k * (point.Y - pt1.Y ) + point.X ) / ( k^2 + 1) ，y = k * ( x - pt1.X) + pt1.Y;
+             然后再判断垂足是否在线段上，如果在线段上则返回垂足；如果不在则计算两端点到垂足的距离，选择距离垂足较近的端点返回。
+            </remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.CP_Pnt2Line(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            求点到直线的垂足
+            </summary>
+            <param name="ptCurrent">目标点</param>
+            <param name="ptStart">直线的一点</param>
+            <param name="ptEnd">直线的另一点</param>
+            <returns>点到直线的垂点</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.CP_Pnt2Polyline(Jurassic.Graph.Base.CPointD,System.Collections.IList)">
+            <summary>
+             点到折线最近交点
+            </summary>
+            <param name="ptCurrent">当前点</param>
+            <param name="Polyline">折线有序点数组</param>
+            <returns>点到折线的最近交点</returns>
+            <remarks>
+             只要分别计算点到每条线段的最近点，记录最近距离，取其中最近距离最小的点即可。 
+            </remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.CP_Pnt2Circle(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Double,Jurassic.Graph.Base.CPointD@)">
+            <summary>
+            点到圆的最近距离是否有交点
+            </summary>
+            <param name="ptCurrent">当前点</param>
+            <param name="ptCirCenter">圆心点</param>
+            <param name="radius">圆半径</param>
+            <param name="ptResult">返回点到圆的最近距离的交点，没有交点时为(0,0)</param>
+            <returns>点到圆的最近距离是否有交点</returns>
+            <remarks>
+            <code>
+            如果该点在圆心，因为圆心到圆周任一点的距离相等，返回UNDEFINED。
+            连接点P和圆心O，如果PO平行于X轴，则根据P在O的左边还是右边计算出
+            最近点的横坐标为centerPoint.X - radius 或 centerPoint.X + radius。
+            如果PO平行于Y轴，则根据P在O的上边还是下边计算出最近点的纵坐标为 
+            centerPoint.Y + radius或 centerPoint.Y - radius。如果PO不平行于X轴和Y轴，
+            则PO的斜率存在且不为0，这时直线PO斜率为k = （ P.Y - O.Y ）/ ( P.X - O.X )。
+            直线PO的方程为：y = k * ( x - P.X) + P.Y。设圆方程为:(x - O.X ) ^2 + ( y - O.Y ) ^2 = r ^2，
+            联立两方程组可以解出直线PO和圆的交点，取其中离P点较近的交点即可。
+            求解后的交点坐标为：
+            x1 = sqrt( r^2 / ( 1 + ( (P.Y - O.Y)/(P.X - O.X) )^2 ) ) + O.X; 
+            x2 = -sqrt( r^2 / ( 1 + ( (P.Y - O.Y)/(P.X - O.X) )^2 ) ) + O.X;
+            y1 = sqrt( r^2 / ( 1 + ( (P.X - O.X)/(P.Y - O.Y) )^2 ) ) + O.Y;
+            y2 = -sqrt( r^2 / ( 1 + ( (P.X - O.X)/(P.Y - O.Y) )^2 ) ) + O.Y;
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.CP_Sect2Circle(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Double,System.Collections.ArrayList@)">
+             <summary>
+             线段和圆的交点。
+             <code>
+             设圆心为O，圆半径为r，直线（或线段）L上的两点为P1,P2。 
+            
+             1. 如果L是线段且P1，P2都包含在圆O内，则没有交点；否则进行下一步。 
+            
+             2. 如果L平行于Y轴， 
+            		a) 计算圆心到L的距离dis；
+            		b) 如果dis > r 则L和圆没有交点；
+            		c) 利用勾股定理，可以求出两交点坐标，但要注意考虑L和圆的相切情况。
+            
+            	3. 如果L平行于X轴，做法与L平行于Y轴的情况类似； 
+            
+            	4. 如果L既不平行X轴也不平行Y轴，可以求出L的斜率K，然后列出L的点斜式方程，和圆方程联立即可求解出L和圆的两个交点； 
+            
+            	5. 如果L是线段，对于2，3，4中求出的交点还要分别判断是否属于该线段的范围内。
+            	
+            	注：
+            	直线P1,P2斜率为k = （P2.Y – P1.Y ）/ (P2.X – P1.X )
+            	直线P1,P2的方程为：y = k * ( x - P1.X) + P1.Y
+            	设圆心O方程为:(x - O.X ) ^2 + ( y - O.Y ) ^2 = r ^2
+            	求解方程组的结果交点为：
+            	X1 =  sqrt( r^2 / ( 1+( ( P1.X-P2.X )/( P2.Y-P1.Y) )^2 ) ) + O.X;
+            	X2 = -sqrt( r^2 / ( 1+( ( P1.X-P2.X )/( P2.Y-P1.Y) )^2 ) ) + O.X;
+            	Y1 =  sqrt( r^2 / ( 1+( ( P2.Y-P1.Y )/( P1.X-P2.X) )^2 ) ) + O.Y;
+            	Y2 = -sqrt( r^2 / ( 1+( ( P2.Y-P1.Y )/( P1.X-P2.X) )^2 ) ) + O.Y;
+            	</code>
+             </summary>
+             <param name="ptStart">线段起始点</param>
+             <param name="ptEnd">线段终止点</param>
+             <param name="ptCirCenter">圆心点</param>
+             <param name="radius">圆半径</param>
+             <param name="arrCrossResult">返回线段或直线与圆的交点数组</param>
+             <returns>线段或直线与圆是否有交点</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.CP_Line2Line(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            计算两条直线的交点坐标
+            </summary>
+            <param name="ptAStart">直线1的坐标</param>
+            <param name="ptAEnd"></param>
+            <param name="ptBStart">直线2的坐标</param>
+            <param name="ptBEnd"></param>
+            <returns>两直线的交点坐标,若两线平行，返回CPointD.Empty</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.CP_Sect2Sect(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Double@,System.Double@)">
+            <summary>
+            计算两条线段的交点坐标
+            </summary>
+            <param name="pt1">直线1的坐标pt1,pt2</param>
+            <param name="pt2"></param>
+            <param name="pt3">直线2的坐标pt3,pt4</param>
+            <param name="pt4"></param>
+            <param name="dT1"> 交点在直线1上的位置系数。</param>
+            <param name="dT2">交点在直线1上的位置系数。</param>
+            <returns>两线段的交点坐标</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.DoubleEquals(System.Double,System.Double)">
+            <summary>
+            判断两个double型数据是否相等,浮动范围在jGMC.EPSLN内
+            </summary>
+            <param name="value1"></param>
+            <param name="value2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.BoundRect(System.Collections.IList)">
+            <summary>
+            求包容矩形
+            </summary>
+            <param name="Polyline">待求包容矩形的折线或多边形顶点的有序数组</param>
+            <returns>包容的最小矩形</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.DotProduce(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            向量点积计算
+            </summary>
+            <param name="lhs">向量1</param>
+            <param name="rhs">向量2</param>
+            <returns>返回double值</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.CrossProduce(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            向量叉积计算
+            </summary>
+            <param name="lhs">向量</param>
+            <param name="rhs">向量</param>
+            <returns>标量</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.LineFomuleFrom2Pnt(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            由直线的两个点直线方程的一般式（Ax+By+C=0）的系数。
+            </summary>
+            <param name="pt1">直线上的一点</param>
+            <param name="pt2">直线上的另一点</param>
+            <param name="A">一般式系数A</param>
+            <param name="B">一般式系数B</param>
+            <param name="C">一般式系数C</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.LineFomuleOfPntVerticalToLine(Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,Jurassic.Graph.Base.CPointD,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            求点到直线的垂线的直线方程的一般式（Ax+By+C=0）的系数。
+            </summary>
+            <param name="pt">垂线通过的点</param>
+            <param name="pt1">直线上的一点</param>
+            <param name="pt2">直线上的另一点</param>
+            <param name="A">一般式系数A</param>
+            <param name="B">一般式系数B</param>
+            <param name="C">一般式系数C</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMA.CrossPointOf2Line(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            求两条直线的交叉点
+            </summary>
+            <param name="A1">直线1的一般式系数A</param>
+            <param name="B1">直线1的一般式系数B</param>
+            <param name="C1">直线1的一般式系数C</param>
+            <param name="A2">直线2的一般式系数A</param>
+            <param name="B2">直线2的一般式系数B</param>
+            <param name="C2">直线2的一般式系数C</param>
+            <returns>如果两线相交，返回交叉点；如果不相交，返回CPointD.Empty</returns>
+        </member>
+        <member name="T:Jurassic.Graph.Base.jGMA.CPointDComparer">
+            <exclude/>
+            <summary>
+            用于点数组按X大小排序，如果X相等，比较Y大小
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.jGMCurveSmooth">
+            <summary>
+            曲线平滑插枝算法。
+            包括：2次B样条、贝塞尔、抛物线加权、样条插值。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveSmooth.Smooth_TwoBSpline(System.Collections.IList,System.Double,System.Collections.IList)">
+            <summary>
+            2次B样条曲线光滑插值算法
+            </summary>
+            <param name="lstPts">曲线原始控制点数组列表</param>
+            <param name="fStep">光滑插值步长</param>
+            <param name="lstPtsSmooth">插值后的点数组列表</param>
+            <returns>插值成功返回true,否则返回false</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveSmooth.Smooth_Bezier(System.Collections.IList,System.Single,System.Collections.IList)">
+            <summary>
+            Bezier曲线光滑插值算法
+            </summary>
+            <param name="lstPts">曲线原始控制点数组列表</param>
+            <param name="fStep">光滑插值步长</param>
+            <param name="lstPtsSmooth">插值后的点数组列表</param>
+            <returns>插值成功返回true,否则返回false</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveSmooth.Smooth_Parabola(System.Collections.IList,System.Single,System.Collections.IList)">
+            <summary>
+            抛物线加权曲线光滑算法
+            </summary>
+            <param name="lstPts">曲线原始控制点数组列表</param>
+            <param name="fStep">光滑插值步长</param>
+            <param name="lstPtsSmooth">插值后的点数组列表</param>
+            <returns>插值成功返回true,否则返回false</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveSmooth.Smooth_Spline(System.Collections.IList,System.Single,System.Collections.IList)">
+            <summary>
+            样条插值曲线光滑算法
+            </summary>
+            <param name="lstPts">曲线原始控制点数组列表</param>
+            <param name="fStep">光滑插值步长</param>
+            <param name="lstPtsSmooth">插值后的点数组列表</param>
+            <returns>插值成功返回true,否则返回false</returns>
+        </member>
+        <member name="T:Jurassic.Graph.Base.CSplitItem">
+            <exclude/>
+            <summary>
+            表示分割曲线的单个元素体（单个元素体可能有多个元素组成）
+            用分割体（符号、文本）分割曲线，用于绘制等值线等专业曲线
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CSplitItem.fStartPos">
+            <summary>
+            元素体中心离曲线起点的距离（沿着曲线测量）
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Base.CSplitItem.fLen">
+            <summary>
+            元素体长度
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSplitItem.#ctor(System.Single,System.Single)">
+            <summary>
+            CSplitItem构造涵数
+            </summary>
+            <param name="startPos">起始距离</param>
+            <param name="len">元素体长度</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CSplitItem.#ctor">
+            <summary>
+            CSplitItem构造涵数，无参
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Base.jGMCurveZip">
+            <summary>
+            曲线抽稀算法。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveZip.ZipCurve(System.Collections.IList,System.Double)">
+            <summary>
+            抽稀折线的点数
+            </summary>
+            <param name="lstPts">内容被改写，折点的有序数组，输入待抽稀的折线，输出抽稀后的折线。</param>
+            <param name="E">
+            输入，误差,当距离小于E时可忽略不计。
+            对于1比1,000,000地图, E = 200 压缩成1比2,000,000, 以此类推
+            </param>
+            <returns>抽稀后折线的点数</returns>
+            <remarks>
+            如果IList的大小是不可变的，则抽稀后的折线lstPts中前 返回点数 的节点是抽稀后的节点，后面的节点都没有用了
+            ( 0,1,2,...抽稀后折线的点数-1)为抽稀后的节点，（抽稀后折线的点数,...最后一个点）是无效的。
+            如果IList的大小是可变的，则抽稀后的折线点就是lstPts中全部的点。
+            </remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveZip.ZipCurve(System.Collections.IList,System.Double,System.Int32,System.Int32)">
+            <summary>
+            抽稀折线局部区间的点数
+            </summary>
+            <param name="lstPts">内容被改写，折点的有序数组，输入待抽稀的折线，输出抽稀后的折线。</param>
+            <param name="E">
+            输入，误差,当距离小于E时可忽略不计。
+            对于1比1,000,000地图, E = 200 压缩成1比2,000,000, 以此类推
+            </param>
+            <param name="nStart">曲线抽稀时的起始位置</param>
+            <param name="nEnd">曲线抽稀时的结束位置</param>
+            <returns>（nStart、nEnd）区间内，抽稀后折线的点数</returns>
+            <remarks>
+            如果IList的大小是不可变的，则抽稀后的折线lstPts中（nStart+返回点数，nEnd）之间的节点是无用的
+            ( 0,1,2,...,nStart,nStart+1,...,nStart+返回点数-1 )有效；( nStart+返回点数,...,nEnd )无效；（nEnd+1,...最后一个点）有效。
+            如果IList的大小是可变的，则抽稀后的折线点就是lstPts中全部的点。
+            </remarks>
+        </member>
+        <member name="M:Jurassic.Graph.Base.jGMCurveZip._ZipMD(System.Collections.IList,System.Int32,System.Int32,System.Double@,System.Int32@)">
+            <summary>
+            计算曲线局部段之间到局部段两端点构成的直线的最大玄背高度
+            调用者：ZipLine
+            </summary>
+            <param name="lstPts">点数组，输入</param>
+            <param name="m1">线段起始点序号，输入</param>
+            <param name="m2">线段终止点序号，输入</param>
+            <param name="h">最大玄高，输出</param>
+            <param name="m">具有最大玄高的节点序号，输出</param>
+            <remarks>
+            如果m1和m2点重合，玄背高度为节点到m1点的距离。
+            </remarks>
+        </member>
+        <member name="T:Jurassic.Graph.Base.CPointDCollections">
+            <exclude/>
+            <summary>
+            CPointD点的集合。
+            编写：徐景周，2006.4.10
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointDCollections.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointDCollections.Add(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            向集合中添加点
+            </summary>
+            <param name="pnt">点</param>
+            <returns>加入点位置</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointDCollections.IndexOf(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            集合中指定点的索引
+            </summary>
+            <param name="pnt">点</param>
+            <returns>指定点索引</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointDCollections.Insert(System.Int32,Jurassic.Graph.Base.CPointD)">
+            <summary>
+            向集合中指定索引位置中插入点
+            </summary>
+            <param name="index">索引号</param>
+            <param name="pnt">点</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointDCollections.Remove(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            删除集合中的点
+            </summary>
+            <param name="pnt">点</param>
+        </member>
+        <member name="M:Jurassic.Graph.Base.CPointDCollections.Contains(Jurassic.Graph.Base.CPointD)">
+            <summary>
+            集合中是否包含指定点
+            </summary>
+            <param name="pnt">点</param>
+            <returns>是否包含指定点</returns>
+        </member>
+        <member name="P:Jurassic.Graph.Base.CPointDCollections.Item(System.Int32)">
+            <summary>
+            矢量索引器 
+            </summary>
+        </member>
+    </members>
+</doc>

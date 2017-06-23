@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by yushanshui (jurassic) -->
+<xs:schema targetNamespace="http://www.jurassic.com.cn/CurveStyleML.xsd" xmlns="http://www.jurassic.com.cn/CurveStyleML.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="CurveStyleML">
+	<xs:element name="CurveStyleLib">
+		<xs:annotation>
+			<xs:documentation>根元素，线型库</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CurveStyle" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>符号库名称</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="application" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>应用领域</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="author" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>作者</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CurveStyle" type="CurveStyleType">
+		<xs:annotation>
+			<xs:documentation>线型</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CurvePen" type="CurvePenType">
+		<xs:annotation>
+			<xs:documentation>绘制线条使用的笔</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CurveEnd" type="CurveEndType">
+		<xs:annotation>
+			<xs:documentation>曲线两头的修饰</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CurveRulerText" type="CurveRulerTextType">
+		<xs:annotation>
+			<xs:documentation>刻度值的修饰</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CurveRulerMark" type="CurveRulerMarkType">
+		<xs:annotation>
+			<xs:documentation>刻度标修饰</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ContourValue" type="ContourValueType">
+		<xs:annotation>
+			<xs:documentation>等值线标注值修饰</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="CurveStyleType">
+		<xs:annotation>
+			<xs:documentation>线型的类型</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="CurvePen" minOccurs="0"/>
+				<xs:element ref="CurveEnd" minOccurs="0"/>
+				<xs:element ref="CurveRulerMark" minOccurs="0"/>
+				<xs:element ref="CurveRulerText" minOccurs="0"/>
+				<xs:element ref="ContourValue" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:int" use="optional">
+			<xs:annotation>
+				<xs:documentation>唯一标识
+</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fullname" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>完全路径名称，使用“/”分隔
+
+最后一个字段为符号名称，前面的字段为符号分类路径。
+
+没有“/”字符的符号，认为是根下的符号。
+
+
+作为符号，必须指定
+
+作为子符号，可以不给</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="width" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>符号原始宽度，以毫米为单位，
+作为符号，必须指定；作为子符号，可以不给</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CurvePenType">
+		<xs:annotation>
+			<xs:documentation>绘制线条使用的笔的类型</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="linejoin" use="optional" default="Round">
+			<xs:annotation>
+				<xs:documentation>绘制直线的连接点风格,Round</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Round"/>
+					<xs:enumeration value="Bevel"/>
+					<xs:enumeration value="Miter"/>
+					<xs:enumeration value="MiterClipped"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="customdata" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>自定义线型的数据，以分号分割的一组数据，表示循环绘制自定义线型的虚实线的长度。只在dashStyle为Custom时有效</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="width" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>笔的宽度</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="color" type="xs:string" use="optional" default="black">
+			<xs:annotation>
+				<xs:documentation>笔的颜色，如果gradient为true，代表起始颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="color2" type="xs:string" use="optional" default="white">
+			<xs:annotation>
+				<xs:documentation>如果gradientcolor为true,代表终止颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="dashstyle" use="optional" default="Solid">
+			<xs:annotation>
+				<xs:documentation>按以下格式书写
+Solid;//指定实线 Dot;//指定由点构成的直线。DashDotDot;//指定由重复的划线点点图案构成的直线。
+DashDot;//指定由重复的划线点图案构成的直线。Dash//指定由划线段组成的直线。Custom;//指定用户定义的自定义划线段样式。</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Solid"/>
+					<xs:enumeration value="Dot"/>
+					<xs:enumeration value="DashDotDot"/>
+					<xs:enumeration value="DashDot"/>
+					<xs:enumeration value="Dash"/>
+					<xs:enumeration value="Custom"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="startcap" use="optional" default="Flat">
+			<xs:annotation>
+				<xs:documentation>笔开始的线帽样式。ArrowAnchor;//指定箭头状锚头帽。DiamondAnchor;//指定菱形锚头帽。Flat;//指定平线帽。NoAnchor//指定没有锚。等</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Flat"/>
+					<xs:enumeration value="Round"/>
+					<xs:enumeration value="RoundAnchor"/>
+					<xs:enumeration value="Square"/>
+					<xs:enumeration value="SquareAnchor"/>
+					<xs:enumeration value="Triangle"/>
+					<xs:enumeration value="ArrowAnchor"/>
+					<xs:enumeration value="DiamondAnchor"/>
+					<xs:enumeration value="NoAnchor"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="endcap" use="optional" default="Flat">
+			<xs:annotation>
+				<xs:documentation>笔结束的线帽样式。ArrowAnchor;//指定箭头状锚头帽。DiamondAnchor;//指定菱形锚头帽。Flat;//指定平线帽。NoAnchor//指定没有锚。等</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Flat"/>
+					<xs:enumeration value="Round"/>
+					<xs:enumeration value="RoundAnchor"/>
+					<xs:enumeration value="Square"/>
+					<xs:enumeration value="SquareAnchor"/>
+					<xs:enumeration value="Triangle"/>
+					<xs:enumeration value="ArrowAnchor"/>
+					<xs:enumeration value="DiamondAnchor"/>
+					<xs:enumeration value="NoAnchor"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="dashcap" use="optional" default="Flat">
+			<xs:annotation>
+				<xs:documentation>点化线中小实线的线帽样式。</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Flat"/>
+					<xs:enumeration value="Round"/>
+					<xs:enumeration value="Triangle"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="gradientcolor" type="xs:boolean" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>是否是双色渐变？</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offset" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>笔偏移中心的距离,平行线。
+按右手法则，正数表示曲线右侧，负数表示曲线左侧</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offsettype" use="optional" default="OffsetMixter">
+			<xs:annotation>
+				<xs:documentation>偏移类型,这个主要用于曲线偏移后,连结点的处理的方式,有以下几种:
+OffsetCut, //剪切
+OffsetIntersect,  //相交
+OffsetMixter  //混合</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="OffsetCut"/>
+					<xs:enumeration value="OffsetIntersect"/>
+					<xs:enumeration value="OffsetMixter"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CurveEndType">
+		<xs:annotation>
+			<xs:documentation>曲线两头的修饰的类型</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="type" use="optional" default="Text">
+			<xs:annotation>
+				<xs:documentation>两端修饰类型，文字或符号</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Text"/>
+					<xs:enumeration value="Symbol"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="location" use="optional" default="Head">
+			<xs:annotation>
+				<xs:documentation>上文字的端点，头、尾或全部</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Head"/>
+					<xs:enumeration value="Tail"/>
+					<xs:enumeration value="Both"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="color" type="xs:string" use="optional" default="black">
+			<xs:annotation>
+				<xs:documentation>文字或符号的颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="size" type="xs:double" use="optional" default="4">
+			<xs:annotation>
+				<xs:documentation>文字或符号的大小</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="rotatetype" use="optional" default="Along">
+			<xs:annotation>
+				<xs:documentation>两端标注文字的旋转控制：Along：沿线段方向；ByValue按照rotate指定的值旋转</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Along"/>
+					<xs:enumeration value="ByValue"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="rotate" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>文字或符号的旋转角度，rotatetype=ByValue时有效</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offseth" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>线端延伸方向的水平偏移</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offsetv" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>线段延伸方向的垂直偏移</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontname" type="xs:string" use="optional" default="宋体">
+			<xs:annotation>
+				<xs:documentation>字体名称</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontstyle" use="optional" default="Regular">
+			<xs:annotation>
+				<xs:documentation>字体风格</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Bold"/>
+					<xs:enumeration value="Italic"/>
+					<xs:enumeration value="Regular"/>
+					<xs:enumeration value="Strikeout"/>
+					<xs:enumeration value="Underline"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="symid" type="xs:integer" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>如果使用符号作为两端标注，符号的id</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="usesymcolor" type="xs:boolean" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>是否使用符号的颜色，如果不使用，则用color代替</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="content" type="xs:string" use="optional" default="test"/>
+	</xs:complexType>
+	<xs:complexType name="CurveRulerTextType">
+		<xs:annotation>
+			<xs:documentation>刻度值的修饰的类型</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="arrangementrule" use="optional" default="NodeOnly">
+			<xs:annotation>
+				<xs:documentation>刻度值标注方式。Equidistant:等间距；Count指定数目；NodeOnly：只在节点处绘制。</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Equidistant"/>
+					<xs:enumeration value="Count"/>
+					<xs:enumeration value="NodeOnly"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="startat" type="xs:double" use="optional" default="-1">
+			<xs:annotation>
+				<xs:documentation>曲线上开始绘制刻度值的距离线头的长度。小于0表示从线头开始标注</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="stopat" type="xs:double" use="optional" default="-1">
+			<xs:annotation>
+				<xs:documentation>曲线上结束绘制刻度值的距离线头的长度。小于0表示标注到线尾</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="initvalue" type="xs:double" use="optional" default="-9999.99">
+			<xs:annotation>
+				<xs:documentation>初始标注的值，后面的标注值由此累加步长。-9999.99表示按起始点实际长度计算。</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="interval" type="xs:double" use="optional" default="100">
+			<xs:annotation>
+				<xs:documentation>标注间隔。如果arrangerule不为NodeOnly时均有效</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="count" type="xs:integer" use="optional" default="2">
+			<xs:annotation>
+				<xs:documentation>如果arrangerule为Count，则代表刻度值的数目</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="rotatetype" use="optional" default="RelativeTo">
+			<xs:annotation>
+				<xs:documentation>标注文字的旋转控制：RelativeTo：相对于曲线标注处的法线方向；absolute按照与水平方向的绝对夹角绘制标注</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="RelativeTo"/>
+					<xs:enumeration value="Absolute"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="rotate" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>标注的旋转角度，受rotatetype影响</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="samedirection" type="xs:boolean" use="optional" default="true">
+			<xs:annotation>
+				<xs:documentation>曲线在垂直方向上发生变化时，可读值是否还遵守右手法则。有时候要求，无论曲线如何掉向，标注值都在曲线的一侧（不是沿曲线方向的一侧，而是图纸上的左侧或右侧）</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offseth" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>标注点些切线方向的偏移</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offsetv" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>标注点法线方向的偏移</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontname" type="xs:string" use="optional" default="宋体">
+			<xs:annotation>
+				<xs:documentation>字体名称</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontstyle" use="optional" default="Regular">
+			<xs:annotation>
+				<xs:documentation>字体风格</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Bold"/>
+					<xs:enumeration value="Italic"/>
+					<xs:enumeration value="Regular"/>
+					<xs:enumeration value="Strikeout"/>
+					<xs:enumeration value="Underline"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="fontcolor" type="xs:string" use="optional" default="0xff000000">
+			<xs:annotation>
+				<xs:documentation>字体颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontsize" type="xs:double" use="optional" default="4">
+			<xs:annotation>
+				<xs:documentation>字体大小</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="decimal" type="xs:integer" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>标注值的小数位数</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="valuestep" type="xs:double" use="optional" default="10"/>
+	</xs:complexType>
+	<xs:complexType name="CurveRulerMarkType">
+		<xs:annotation>
+			<xs:documentation>刻度标修饰的类型</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="arrangementrule" use="optional" default="Equidistant">
+			<xs:annotation>
+				<xs:documentation>刻度标注方式。Equidistant:等间距；Count指定数目；NodeOnly：只在节点处绘制。</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Equidistant"/>
+					<xs:enumeration value="Count"/>
+					<xs:enumeration value="NodeOnly"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="startat" type="xs:double" use="optional" default="-1">
+			<xs:annotation>
+				<xs:documentation>曲线上开始绘制刻度标的距离线头的长度。小于0表示从线头开始绘制</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="stopat" type="xs:double" use="optional" default="-1">
+			<xs:annotation>
+				<xs:documentation>曲线上结束绘制刻度值的距离线头的长度。小于0表示标注到线尾</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="interval" type="xs:double" use="optional" default="100">
+			<xs:annotation>
+				<xs:documentation>标注间隔，。如果arrangerule不为NodeOnly时均有效</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="count" type="xs:integer" use="optional" default="2">
+			<xs:annotation>
+				<xs:documentation>如果arrangerule为Count，则代表刻度标的数目</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="rotatetype" use="optional" default="RelativeTo">
+			<xs:annotation>
+				<xs:documentation>标注文字的旋转控制：RelativeTo：相对于曲线标注处的法线方向；absolute按照与水平方向的绝对夹角绘制标注</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="RelativeTo"/>
+					<xs:enumeration value="Absolute"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="rotate" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>标注的旋转角度，受rotatetype影响</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="samedirection" type="xs:boolean" use="optional" default="true">
+			<xs:annotation>
+				<xs:documentation>曲线在垂直方向上发生变化时，可读值是否还遵守右手法则。有时候要求，无论曲线如何掉向，标注值都在曲线的一侧（不是沿曲线方向的一侧，而是图纸上的左侧或右侧）</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offseth" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>标注点些切线方向的偏移</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offsetv" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>标注点法线方向的偏移</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="symid" type="xs:integer" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>如果使用符号作为两端标注，符号的id</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="width" type="xs:double" use="optional" default="0.5">
+			<xs:annotation>
+				<xs:documentation>符号的大小</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="usesymcolor" type="xs:boolean" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>是否使用符号的颜色，如果不使用，则用color代替</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="color" type="xs:string" use="optional" default="black">
+			<xs:annotation>
+				<xs:documentation>符号的颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="height" type="xs:double" use="optional" default="0.5"/>
+		<xs:attribute name="issplit" type="xs:boolean" use="optional" default="true"/>
+	</xs:complexType>
+	<xs:complexType name="ContourValueType">
+		<xs:annotation>
+			<xs:documentation>等值线标注值修饰的类型</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="arrangementrule" use="optional" default="MinCurvature">
+			<xs:annotation>
+				<xs:documentation>数字绘制的方式。Equidistant:等间距；Count：指定数目；MinCurvature最小曲率处；Custom：指定位置</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Equidistant"/>
+					<xs:enumeration value="Count"/>
+					<xs:enumeration value="MinCurvature"/>
+					<xs:enumeration value="Custom"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="interval" type="xs:double" use="optional" default="100">
+			<xs:annotation>
+				<xs:documentation>标注间隔。如果arrangerule为EquiDistant和Count时有效</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="count" type="xs:integer" use="optional" default="1">
+			<xs:annotation>
+				<xs:documentation>绘制数字的数目。只有在arrangementrule为Count时有效</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="offset" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>笔偏移中心的距离,平行线。
+
+按右手法则，正数表示曲线右侧，负数表示曲线左侧</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontname" type="xs:string" use="optional" default="宋体">
+			<xs:annotation>
+				<xs:documentation>字体名称</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontstyle" use="optional" default="Regular">
+			<xs:annotation>
+				<xs:documentation>字体风格</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Bold"/>
+					<xs:enumeration value="Italic"/>
+					<xs:enumeration value="Regular"/>
+					<xs:enumeration value="Strikeout"/>
+					<xs:enumeration value="Underline"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="fontcolor" type="xs:string" use="optional" default="black">
+			<xs:annotation>
+				<xs:documentation>字体颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontsize" type="xs:double" use="optional" default="4">
+			<xs:annotation>
+				<xs:documentation>字体大小</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="value" type="xs:string" use="optional" default="100">
+			<xs:annotation>
+				<xs:documentation>等高线的文本值</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

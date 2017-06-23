@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by xjz (xjz) -->
+<xs:schema targetNamespace="http://www.jurassic.com.cn/SymML.xsd" xmlns="http://www.jurassic.com.cn/SymML.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="SymML">
+	<xs:element name="SymLib">
+		<xs:annotation>
+			<xs:documentation>根元素，符号库</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Symbol" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>符号库名称</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="application" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>应用领域</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="author" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>作者</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SymbolType">
+		<xs:annotation>
+			<xs:documentation>符号类型</xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element ref="Symbol"/>
+			<xs:element ref="SymCurve"/>
+			<xs:element ref="SymArc"/>
+			<xs:element ref="SymText"/>
+			<xs:element name="Frames">
+				<xs:annotation>
+					<xs:documentation>符号帧，其中每一个作为其它符号的替代。</xs:documentation>
+					<xs:documentation>符号帧，其中每一个作为其它符号的替代。</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element ref="Symbol"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+		<xs:attribute name="id" type="xs:int" use="optional">
+			<xs:annotation>
+				<xs:documentation>唯一标识
+。作为符号，必须指定;作为子符号，可以不给</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fullname" type="xs:string" use="optional" default="geomap符号/XXX符号">
+			<xs:annotation>
+				<xs:documentation>完全路径名称，使用“/”分隔
+
+最后一个字段为符号名称，前面的字段为符号分类路径。
+
+没有“/”字符的符号，认为是根下的符号。
+
+
+作为符号，必须指定
+
+作为子符号，可以不给</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="centerx" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>符号中心点x坐标。作为符号，缺省为0；作为子符号，代表在父符号中的位置。</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="centery" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>符号中心点y坐标。作为符号，缺省为0；作为子符号，代表在父符号中的位置。</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="width" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>符号原始宽度，以毫米为单位，
+作为符号，必须指定；作为子符号，可以不给</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="height" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>符号原始高度，以毫米为单位，
+作为符号，必须指定；作为子符号，可以不给</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="zoomctrl" use="optional" default="Zoom">
+			<xs:annotation>
+				<xs:documentation>缩放控制
+Zoom:可缩放
+
+OriginalSize:不可缩放，按width和height指定的大小绘制
+
+OriginalAspect:可保持长宽比例缩放</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Zoom"/>
+					<xs:enumeration value="OriginalSize"/>
+					<xs:enumeration value="OriginalAspect"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="rotatable" type="xs:boolean" use="optional" default="true">
+			<xs:annotation>
+				<xs:documentation>是否可以旋转
+true:可以旋转
+false:不可以旋转，尽管指定了旋转角度</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="variablewidth" type="xs:boolean" use="optional" default="true"/>
+		<xs:attribute name="backcolor" type="xs:string" use="optional" default="0x00000000">
+			<xs:annotation>
+				<xs:documentation>面积充填的颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SymCurveType">
+		<xs:annotation>
+			<xs:documentation>符号曲线、多边形类型</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Point" minOccurs="2" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="type" use="optional" default="Border">
+			<xs:annotation>
+				<xs:documentation>曲线绘制类型
+线、面、线和面</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Border"/>
+					<xs:enumeration value="Fill"/>
+					<xs:enumeration value="Both"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="borderstyle" use="optional" default="Solid">
+			<xs:annotation>
+				<xs:documentation>边线的线型</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Solid"/>
+					<xs:enumeration value="Dash"/>
+					<xs:enumeration value="Dot"/>
+					<xs:enumeration value="DashDot"/>
+					<xs:enumeration value="DashDotDot"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="borderwidth" type="xs:double" use="optional" default="0.1">
+			<xs:annotation>
+				<xs:documentation>边线的宽度。mm为单位</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="bordercolor" type="xs:string" use="optional" default="0xFF000000">
+			<xs:annotation>
+				<xs:documentation>边线的颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fillcolor" type="xs:string" use="optional" default="0x00000000">
+			<xs:annotation>
+				<xs:documentation>面积充填的颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SymArcType">
+		<xs:annotation>
+			<xs:documentation>符号弧段、椭圆类型</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="type" use="optional" default="Border">
+			<xs:annotation>
+				<xs:documentation>曲线绘制类型
+线、面、线和面</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Border"/>
+					<xs:enumeration value="Fill"/>
+					<xs:enumeration value="Both"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="shape" use="optional" default="Ellipse">
+			<xs:annotation>
+				<xs:documentation>形状。扇形或椭圆</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Arc"/>
+					<xs:enumeration value="Ellipse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="borderstyle" use="optional" default="Solid">
+			<xs:annotation>
+				<xs:documentation>边线的线型</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Dash"/>
+					<xs:enumeration value="DashDot"/>
+					<xs:enumeration value="DashDotDot"/>
+					<xs:enumeration value="Dot"/>
+					<xs:enumeration value="Solid"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="borderwidth" type="xs:double" use="optional" default="0.1">
+			<xs:annotation>
+				<xs:documentation>边线的宽度。mm为单位</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="bordercolor" type="xs:string" use="optional" default="0xFF000000">
+			<xs:annotation>
+				<xs:documentation>边线的颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fillcolor" type="xs:string" use="optional" default="0x00000000">
+			<xs:annotation>
+				<xs:documentation>面积充填的颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="x" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>圆心x坐标</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="y" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>圆心y坐标</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="width" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>横轴直径</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="height" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>纵轴直径</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="start" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>扇形的开始角度。以度为单位</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="end" type="xs:double" use="optional" default="360">
+			<xs:annotation>
+				<xs:documentation>扇形的结束角度。以度为单位</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="rotate" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>整体旋转角度。以度为单位</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SymTextType">
+		<xs:annotation>
+			<xs:documentation>符号文字类型</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="text" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>文字内容</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontname" type="xs:string" use="optional" default="宋体">
+			<xs:annotation>
+				<xs:documentation>字体名称</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontstyle" use="optional" default="Regular">
+			<xs:annotation>
+				<xs:documentation>字体风格</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontcolor" type="xs:string" use="optional" default="0xFF000000">
+			<xs:annotation>
+				<xs:documentation>字体颜色</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="fontsize" type="xs:double" use="optional" default="4">
+			<xs:annotation>
+				<xs:documentation>字体大小。以毫米为单位</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="x" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>文字起始点x</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="y" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>文字起始点y</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="rotate" type="xs:double" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>整体旋转角度。以度为单位</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PointType">
+		<xs:annotation>
+			<xs:documentation>坐标点类型</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="x" type="xs:double"/>
+		<xs:attribute name="y" type="xs:double"/>
+	</xs:complexType>
+	<xs:element name="Symbol">
+		<xs:annotation>
+			<xs:documentation>符号,中心点（0,0）,其范围在（+-width/2,+-height/2）之间</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="SymbolType"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SymCurve" type="SymCurveType">
+		<xs:annotation>
+			<xs:documentation>符号曲线或多边性</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SymArc" type="SymArcType">
+		<xs:annotation>
+			<xs:documentation>符号弧段或椭圆</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SymText" type="SymTextType">
+		<xs:annotation>
+			<xs:documentation>符号文字</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Point">
+		<xs:annotation>
+			<xs:documentation>坐标点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="PointType"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

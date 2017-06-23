@@ -1,0 +1,1948 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SymbolLib</name>
+    </assembly>
+    <members>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.PathGradientBrushStyles">
+            <exclude/>
+            <summary>
+            已有路径渐变填充样式，jingzhou xu,2005.8.1
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.PathGradientBrushStyles.HexagonPathGradientBrush">
+            <summary> 六边形路径渐变画刷 </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.PathGradientBrushStyles.TwoTrianglePathGradientBrush">
+            <summary> 双三角路径渐变画刷 </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.PathGradientBrushStyles.DiamondPathGradientBrush">
+            <summary> 菱形路径渐变画刷 </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.PathGradientBrushStyles.SquarePathGradientBrush">
+            <summary> 四边形路径渐变画刷 </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.PathGradientBrushStyles.StarPathGradientBrush">
+            <summary> 五角星路径渐变画刷 </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.PathGradientBrushStyles.BallPathGradientBrush">
+            <summary> 球形路径渐变画刷 </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.BrushFillStyles">
+            <exclude/>
+            <summary>
+            画刷填充样式，jingzhou xu
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.BrushFillStyles.SolidBursh">
+            <summary> 单色画刷填充 </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.BrushFillStyles.HatchBrush">
+            <summary> 阴影画刷填充 </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.BrushFillStyles.LinearGradientBrush">
+            <summary> 线性渐变画刷填充 </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.BrushFillStyles.PathGradientBrush">
+            <summary> 路径渐变画刷填充 </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.BrushFillStyles.TextureBrush">
+            <summary> 纹理画刷填充 </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.FillTypes">
+            <exclude/>
+            <summary>
+            Enumeration type for the various types of fills that can be used with 
+            charts.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.FillTypes.None">
+            <summary> No fill </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.FillTypes.Solid">
+            <summary> A solid fill using <see cref="T:System.Drawing.SolidBrush"/> </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.FillTypes.Brush">
+            <summary> A custom fill using either <see cref="T:System.Drawing.Drawing2D.LinearGradientBrush"/> or
+            <see cref="T:System.Drawing.TextureBrush"/></summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.FillTypes.GradientByX">
+            <summary>
+            Fill with a single solid color based on the X value of the data.</summary>
+            <remarks>The X value is
+            used to determine the color value based on a gradient brush, and using a data range
+            of <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.RangeMin"/> and <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.RangeMax"/>.  You can create a multicolor
+            range by initializing the <see cref="T:Jurassic.Graph.Drawer.Symbol.Fill"/> class with your own custom
+            <see cref="F:Jurassic.Graph.Drawer.Symbol.FillTypes.Brush"/> object based on a <see cref="T:System.Drawing.Drawing2D.ColorBlend"/>.  In cases where a
+            data value makes no sense a default value of 50% of the range is assumed.  The default range is 0 to 1.
+            </remarks>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.FillTypes.GradientByY">
+            <summary>
+            Fill with a single solid color based on the Z value of the data.</summary>
+            <remarks>The Z value is
+            used to determine the color value based on a gradient brush, and using a data range
+            of <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.RangeMin"/> and <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.RangeMax"/>.  You can create a multicolor
+            range by initializing the <see cref="T:Jurassic.Graph.Drawer.Symbol.Fill"/> class with your own custom
+            <see cref="F:Jurassic.Graph.Drawer.Symbol.FillTypes.Brush"/> object based on a <see cref="T:System.Drawing.Drawing2D.ColorBlend"/>.  In cases where a
+            data value makes no sense a default value of 50% of the range is assumed.  The default range is 0 to 1.
+            </remarks>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.FillTypes.GradientByZ">
+            <summary>
+            Fill with a single solid color based on the Z value of the data.</summary>
+            <remarks>The Z value is
+            used to determine the color value based on a gradient brush, and using a data range
+            of <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.RangeMin"/> and <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.RangeMax"/>.  You can create a multicolor
+            range by initializing the <see cref="T:Jurassic.Graph.Drawer.Symbol.Fill"/> class with your own custom
+            <see cref="F:Jurassic.Graph.Drawer.Symbol.FillTypes.Brush"/> object based on a <see cref="T:System.Drawing.Drawing2D.ColorBlend"/>.  In cases where a
+            data value makes no sense a default value of 50% of the range is assumed.  The default range is 0 to 1.
+            </remarks>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.AlignHs">
+            <exclude/>
+            <summary>
+            Enumeration type for the different horizontal text alignment options
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.AlignHs.Left">
+            <summary>
+            Position the text so that its left edge is aligned with the
+            specified X,Y location.  Used by the
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.AlignHs.Center">
+            <summary>
+            Position the text so that its center is aligned (horizontally) with the
+            specified X,Y location.  Used by the
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.AlignHs.Right">
+            <summary>
+            Position the text so that its right edge is aligned with the
+            specified X,Y location.  Used by the
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.AlignPs">
+            <exclude/>
+            <summary>
+            Enumeration type for the different proximal alignment options
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.AlignPs.Inside">
+            <summary>
+            Position the text so that its "inside" edge (the edge that is
+            nearest to the alignment reference point or object) is aligned.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.AlignPs.Center">
+            <summary>
+            Position the text so that its center is aligned with the
+            reference object or point.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.AlignPs.Outside">
+            <summary>
+            Position the text so that its right edge (the edge that is
+            farthest from the alignment reference point or object) is aligned.
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.AlignVs">
+            <exclude/>
+            <summary>
+            Enumeration type for the different vertical text alignment options
+            </summary>
+            specified X,Y location.  Used by the
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.AlignVs.Top">
+            <summary>
+            Position the text so that its top edge is aligned with the
+            specified X,Y location.  Used by the
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.AlignVs.Center">
+            <summary>
+            Position the text so that its center is aligned (vertically) with the
+            specified X,Y location.  Used by the
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.AlignVs.Bottom">
+            <summary>
+            Position the text so that its bottom edge is aligned with the
+            specified X,Y location.  Used by the
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.Fill">
+             <exclude/>
+             <summary>
+             功能：图元填充类，可进行单色，二色渐变，三色渐变，位图等多种填充。
+             附注：对矩形、椭圆、扇形等进行各种填充效果。
+             </summary>
+             <example>
+            	<code>
+             用法：
+            		public Fill  m_fill				= new Fill();		// 图元填充(先默认构造)
+            			
+            		m_fill.StartColor	= Color.Transparent;
+            		m_fill.MidColor		= Color.Transparent;
+            		m_fill.EndColor		= Color.Transparent;
+            		// 构造三色渐变(三种颜色相同为单色)
+            		m_fill.ConstructLinearGradientBrush( m_fill.StartColor, m_fill.MidColor, m_fill.EndColor, 0.0f);
+            
+            		CRectD rcD			= m_Bound;
+            		RectangleF rectF	= new RectangleF((float)rcD.left, (float)rcD.top, (float)rcD.Width(), (float)rcD.Height());
+            		
+            		Brush brush			= m_fill.MakeBrush(rectF);
+            		g.FillPie( brush, rectF.Left, rectF.Top, rectF.Width, rectF.Height, sector.m_startAngle, sector.m_sweepAngle );
+            		brush.Dispose () ;
+            	</code>
+             </example>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.schema">
+            <summary>
+            Current schema value that defines the version of the serialized file
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.color">
+            <summary>
+            Private field that stores the fill color.  Use the public
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.brush">
+            <summary>
+            Private field that stores the custom fill brush. 
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.type">
+            <summary>
+            Private field that determines the type of color fill. 
+            <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/>.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.isScaled">
+            <summary>
+            Private field that determines if the brush will be scaled to the bounding box
+            of the filled object.  If this value is false, then the brush will only be aligned
+            with the filled object based on the <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignH"/> and <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignV"/>
+            properties.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.alignH">
+            <summary>
+            Private field that determines how the brush will be aligned with the filled object
+            in the horizontal direction. 
+            </summary>
+            <seealso cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignH"/>
+            <seealso cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignV"/>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.alignV">
+            <summary>
+            Private field that determines how the brush will be aligned with the filled object
+            in the vertical direction. 
+            properties.
+            </summary>
+            <seealso cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignH"/>
+            <seealso cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignV"/>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.image">
+            <summary>
+            纹理画刷图案
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.wrapMode">
+            <summary>
+            Private field that saves the image wrapmode passed to the constructor.
+            This is used strictly for serialization.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.colorList">
+            <summary>
+            Private field that saves the list of colors used to create the
+            <see cref="T:System.Drawing.Drawing2D.LinearGradientBrush"/> in the constructor.  This is used strictly
+            for serialization.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.positionList">
+            <summary>
+            Private field that saves the list of positions used to create the
+            <see cref="T:System.Drawing.Drawing2D.LinearGradientBrush"/> in the constructor.  This is used strictly
+            for serialization.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.angle">
+            <summary>
+            Private field the saves the angle of the fill.  This is used strictly for serialization.
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.Init">
+            <summary>
+            Generic initializer to default values
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Point[],System.Drawing.Drawing2D.WrapMode)">
+            <summary>
+            填充构造，创建路径渐变画刷，jingzhou xu
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.PointF[],System.Drawing.Drawing2D.WrapMode)">
+            <summary>
+            填充构造，创建路径渐变画刷，jingzhou xu
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Drawing2D.HatchStyle,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            填充构造，创建阴影画刷，jingzhou xu
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor">
+            <summary>
+            The default constructor.  Initialized to no fill.
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color,System.Drawing.Brush,Jurassic.Graph.Drawer.Symbol.FillTypes)">
+            <summary>
+            Constructor that specifies the color, brush, and type for this fill.
+            </summary>
+            <param name="color">The color of the fill for solid fills</param>
+            <param name="brush">A custom brush for fills.  Can be a <see cref="T:System.Drawing.SolidBrush"/>,
+            <see cref="T:System.Drawing.Drawing2D.LinearGradientBrush"/>, or <see cref="T:System.Drawing.TextureBrush"/>.</param>
+            <param name="type">for this fill.</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color)">
+            <summary>
+            Constructor that creates a solid color-fill, 
+            </summary>
+            <param name="color">The color of the solid fill</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color,System.Drawing.Color,System.Single)">
+            <summary>
+            Constructor that creates a linear gradient color-fill
+            </summary>
+            <param name="color1">The first color for the gradient fill</param>
+            <param name="color2">The second color for the gradient fill</param>
+            <param name="angle">The angle (degrees) of the gradient fill</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Constructor that creates a linear gradient color-fill
+            </summary>
+            <param name="color1">The first color for the gradient fill</param>
+            <param name="color2">The second color for the gradient fill</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Constructor that creates a linear gradient color-fill, This gradient fill
+            consists of three colors.
+            </summary>
+            <param name="color1">The first color for the gradient fill</param>
+            <param name="color2">The second color for the gradient fill</param>
+            <param name="color3">The third color for the gradient fill</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color,System.Drawing.Color,System.Drawing.Color,System.Single)">
+            <summary>
+            Constructor that creates a linear gradient color-fill, This gradient fill
+            consists of three colors
+            </summary>
+            <param name="color1">The first color for the gradient fill</param>
+            <param name="color2">The second color for the gradient fill</param>
+            <param name="color3">The third color for the gradient fill</param>
+            <param name="angle">The angle (degrees) of the gradient fill</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Drawing2D.ColorBlend)">
+            <summary>
+            Constructor that creates a linear gradient multi-color-fill,The gradient
+            angle is defaulted to zero.
+            </summary>
+            <param name="blend">The <see cref="T:System.Drawing.Drawing2D.ColorBlend"/> object that defines the colors
+            and positions along the gradient.</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Drawing2D.ColorBlend,System.Single)">
+            <summary>
+            Constructor that creates a linear gradient multi-color-fill, drawn at the
+            specified angle (degrees).
+            </summary>
+            <param name="blend">The  object that defines the colors
+            and positions along the gradient.</param>
+            <param name="angle">The angle (degrees) of the gradient fill</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color[])">
+            <summary>
+            Constructor that creates a linear gradient multi-color-fill
+            </summary>
+            <param name="colors">The array of <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Color"/> objects that defines the colors
+            along the gradient.</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color[],System.Single)">
+            <summary>
+            Constructor that creates a linear gradient multi-color-fill
+            </summary>
+            <param name="colors">The array of <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Color"/> objects that defines the colors
+            along the gradient.</param>
+            <param name="angle">The angle (degrees) of the gradient fill</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color[],System.Single[])">
+            <summary>
+            Constructor that creates a linear gradient multi-color-fill
+            </summary>
+            <param name="colors">The array of <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Color"/> objects that defines the colors
+            along the gradient.</param>
+            <param name="positions">The array of floating point values that defines the color
+            positions along the gradient.  Values should range from 0 to 1.</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Color[],System.Single[],System.Single)">
+            <summary>
+            Constructor that creates a linear gradient multi-color-fill
+            </summary>
+            <param name="colors">The array of <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Color"/> objects that defines the colors
+            along the gradient.</param>
+            <param name="positions">The array of floating point values that defines the color
+            positions along the gradient.  Values should range from 0 to 1.</param>
+            <param name="angle">The angle (degrees) of the gradient fill</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Image,System.Drawing.Drawing2D.WrapMode)">
+            <summary>
+            Constructor that creates a texture fill, using the specified image.
+            </summary>
+            <param name="image">The <see cref="T:System.Drawing.Image"/> to use for filling</param>
+            <param name="wrapMode">The <see cref="T:System.Drawing.Drawing2D.WrapMode"/> class that controls the image wrapping properties</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Brush)">
+            <summary>
+            Constructor that creates a <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/> fill, using a user-supplied, custom
+            <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/>.  The brush will be scaled to fit the destination screen object
+            unless you manually change <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.IsScaled"/> to false;
+            </summary>
+            <param name="brush">The <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/> to use for fancy fills.  Typically, this would
+            be a <see cref="T:System.Drawing.Drawing2D.LinearGradientBrush"/> or a <see cref="T:System.Drawing.TextureBrush"/> class</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Brush,System.Boolean)">
+            <summary>
+            Constructor that creates a <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/> fill, using a user-supplied, custom
+            <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/>.  The brush will be scaled to fit the destination screen object
+            according to the <see paramref="isScaled"/> parameter.
+            </summary>
+            <param name="brush">The <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/> to use for fancy fills.  Typically, this would
+            be a <see cref="T:System.Drawing.Drawing2D.LinearGradientBrush"/> or a <see cref="T:System.Drawing.TextureBrush"/> class</param>
+            <param name="isScaled">Determines if the brush will be scaled to fit the bounding box
+            of the destination object.  true to scale it, false to leave it unscaled</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Drawing.Brush,Jurassic.Graph.Drawer.Symbol.AlignHs,Jurassic.Graph.Drawer.Symbol.AlignVs)">
+            <summary>
+            Constructor that creates a <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/> fill, using a user-supplied, custom
+            <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/>.  This constructor will make the brush unscaled (see <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.IsScaled"/>),
+            but it provides <see paramref="alignH"/> and <see paramref="alignV"/> parameters to control
+            alignment of the brush with respect to the filled object.
+            </summary>
+            <param name="brush">The <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/> to use for fancy fills.  Typically, this would
+            be a <see cref="T:System.Drawing.Drawing2D.LinearGradientBrush"/> or a <see cref="T:System.Drawing.TextureBrush"/> class</param>
+            <param name="alignH">Controls the horizontal alignment of the brush within the filled object
+            (see <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignH"/></param>
+            <param name="alignV">Controls the vertical alignment of the brush within the filled object
+            (see <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignV"/></param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(Jurassic.Graph.Drawer.Symbol.Fill)">
+            <summary>
+            The Copy Constructor
+            </summary>
+            <param name="rhs">The Fill object from which to copy</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.Clone">
+            <summary>
+            Deep-copy clone routine
+            </summary>
+            <returns>A new, independent copy of the Fill class</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor for deserializing objects
+            </summary>
+            <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> instance that defines the serialized data
+            </param>
+            <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"/> instance that contains the serialized data
+            </param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> instance with the data needed to serialize the target object
+            </summary>
+            <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> instance that defines the serialized data</param>
+            <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"/> instance that contains the serialized data</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.MakeBrush(System.Drawing.RectangleF)">
+            <summary>
+            根据FillTypes类型创建一种相应画刷
+            </summary>
+            <param name="rect">填充画刷的范围</param>
+            <returns>新创建的画刷</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.GetGradientColor">
+            <summary>
+            根据三维坐标随机选取一种颜色
+            </summary>
+            <returns>随机选取的一种颜色</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.ScaleBrush(System.Drawing.RectangleF,System.Drawing.Brush,System.Boolean)">
+            <summary>
+            创建五种画刷中的一种，其中线性渐变和纹理画刷可按比例矩形大小选择是否缩放创建。
+            </summary>
+            <param name="rect">矩形范围</param>
+            <param name="brush">指定画刷</param>
+            <param name="isScaled">是否按指定矩形缩放</param>
+            <returns>返回五种画刷中的一种</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.Draw(System.Drawing.Graphics,System.Drawing.RectangleF)">
+            <summary>
+            Fill the background of the <see cref="T:System.Drawing.RectangleF"/> area, using the
+            fill type from this <see cref="T:Jurassic.Graph.Drawer.Symbol.Fill"/>.
+            </summary>
+            <param name="g">
+            A graphic device object to be drawn into.  This is normally e.Graphics from the
+            PaintEventArgs argument to the Paint() method.
+            </param>
+            <param name="rect">The <see cref="T:System.Drawing.RectangleF"/> struct specifying the area
+            to be filled</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.ConstructTextureBrush(System.Drawing.Image,System.Drawing.Drawing2D.WrapMode)">
+            <summary>
+            构造纹理填充画刷，jingzhou xu,2005.8.5
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.ConstructLinearGradientBrush(System.Drawing.Color,System.Drawing.Color,System.Drawing.Color,System.Single)">
+            <summary>
+            构造线性渐变填充画刷，jingzhou xu,2005.8.3
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.ConstructSolidBrush(System.Drawing.Color)">
+            <summary>
+            构造单色填充画刷，jingzhou xu,2005.8.3
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.ConstructHatchBrush(System.Drawing.Drawing2D.HatchStyle,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            构造阴影填充画刷，jingzhou xu,2005.8.3
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.ConstructPathGradientBrush">
+            <summary>
+            构造已有路径渐变填充画刷，jingzhou xu,2005.8.2
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.GetHexagonPathGradientBrush(System.Drawing.Drawing2D.PathGradientBrush@,System.Drawing.Drawing2D.PathGradientBrush@)">
+            <summary>
+             获取六边形平铺路径渐变两画刷，jingzhou xu,2005.8.1
+            </summary>
+            <param name="brush1">指定画刷一</param>
+            <param name="brush2">指定画刷二</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.GetTwoTrianglePathGradientBrush(System.Drawing.Drawing2D.PathGradientBrush@,System.Drawing.Drawing2D.PathGradientBrush@)">
+            <summary>
+            获取双三角平铺路径渐变两画刷，jingzhou xu,2005.8.1
+            </summary>
+            <param name="brush1">指定画刷一</param>
+            <param name="brush2">指定画刷二</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.GetDiamondPathGradientBrush(System.Drawing.Drawing2D.PathGradientBrush@)">
+            <summary>
+            获取菱形平铺路径渐变画刷，jingzhou xu,2005.8.1
+            </summary>
+            <param name="brush">指定画刷</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.GetSquarePathGradientBrush(System.Drawing.Drawing2D.PathGradientBrush@)">
+            <summary>
+             获取四边形平铺路径渐变画刷，jingzhou xu,2005.8.1
+            </summary>
+            <param name="brush">指定画刷</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.GetStarPathGradientBrush(System.Drawing.Drawing2D.PathGradientBrush@)">
+            <summary>
+             获取五角星平铺路径渐变画刷，jingzhou xu,2005.8.1
+            </summary>
+            <param name="brush">指定画刷</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.Fill.GetBallPathGradientBrush(System.Drawing.Drawing2D.PathGradientBrush@)">
+            <summary>
+             获取球形平铺路径渐变画刷，jingzhou xu,2005.8.8
+            </summary>
+            <param name="brush">指定画刷</param>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.TextureBrushImage">
+            <summary>
+            纹理画刷填充图案, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.BrushStyle">
+            <summary>
+            填充画刷样式, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.HatchBrushStyle">
+            <summary>
+            阴影画刷风格(共53种), jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.PathBrushStyle">
+            <summary>
+            已有的路径渐变画刷风格, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.StartColor">
+            <summary>
+            填充渐变起始颜色, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.MidColor">
+            <summary>
+            填充渐变中间颜色, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.EndColor">
+            <summary>
+            填充渐变终止颜色, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.HatchForegroundColor">
+            <summary>
+            阴影画刷前景色, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.HatchBackgroundColor">
+            <summary>
+            阴影画刷背景色, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.PathBrushOne">
+            <summary>
+            路径渐变画刷1, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.PathBrushTwo">
+            <summary>
+            路径渐变画刷2, jingzhou xu
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.Color">
+            <summary>
+            The fill color.  This property is used as a single color to make a solid fill
+            or it can be used in combination with <see cref="P:System.Drawing.Color.White"/> to make a
+            <see cref="T:System.Drawing.Drawing2D.LinearGradientBrush"/>
+            </summary>
+            <seealso cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Type"/>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush">
+            <summary>
+            The custom fill brush. 
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.Type">
+            <summary>
+            Determines the type of fill, which can be either solid
+            color
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.IsVisible">
+            <summary>
+            This property determines the type of color fill. 
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.IsScaled">
+            <summary>
+            Determines if the brush will be scaled to the bounding box
+            of the filled object.  If this value is false, then the brush will only be aligned
+            with the filled object based on the <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignH"/> and <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignV"/>
+            properties.
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignH">
+            <summary>
+            Determines how the brush will be aligned with the filled object
+            in the horizontal direction. 
+            </summary>
+            <seealso cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignV"/>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignV">
+            <summary>
+            Determines how the brush will be aligned with the filled object
+            in the vertical direction. This field only applies if <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.IsScaled"/> is false.
+            </summary>
+            <seealso cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignH"/>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.IsGradientValueType">
+            <summary>
+            Returns a boolean value indicating whether or not this fill is a "Gradient-By-Value"
+            type. 
+            </summary>
+            <value>true if this is a Gradient-by-value type, false otherwise</value>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.RangeMin">
+            <summary>
+            The minimum user-scale value for the gradient-by-value determination.  This defines
+            the user-scale value for the start of the gradient.
+            </summary>
+            <value>A double value, in user scale unit</value>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.Fill.RangeMax">
+            <summary>
+            The maximum user-scale value for the gradient-by-value determination.  This defines
+            the user-scale value for the end of the gradient.
+            </summary>
+            <value>A double value, in user scale unit</value>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.Fill.Default">
+            <summary>
+            A simple struct that defines the
+            default property values for the <see cref="T:Jurassic.Graph.Drawer.Symbol.Fill"/> class.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.Default.IsScaled">
+            <summary>
+            The default scaling mode for <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/> fills.
+            This is the default value for the <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.IsScaled"/> property.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.Default.AlignH">
+            <summary>
+            The default horizontal alignment for <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/> fills.
+            This is the default value for the <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignH"/> property.
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.Fill.Default.AlignV">
+            <summary>
+            The default vertical alignment for <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.Brush"/> fills.
+            This is the default value for the <see cref="P:Jurassic.Graph.Drawer.Symbol.Fill.AlignV"/> property.
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer">
+             <summary>
+             符号绘制、填充类，从ISymbolDrawer接口派生。
+             </summary>
+             <example>
+             <c>CSymbolDrawer使用示例</c>
+             <code>
+             // 坐标单位
+            	e.Graphics.PageUnit	= GraphicsUnit.Millimeter;
+            	e.Graphics.PageScale = 0.1f;
+            
+            	ISymbolDrawer	m_Drawer = new CSymbolDrawer();
+            	CSymbolLib		m_Lib = new CSymbolLib();
+            	
+            	// 打开符号库文件
+            	m_Lib.OpenLibFile("Symbol.xml");
+            	
+            	CSymbol sym	= m_Lib.GetSymbol( 0 );
+            	// 填充符号(椭圆方式，单色)
+            	m_Drawer.FillSymbol( e.Graphics, sym, 100, 100, 45.0f, Color.Green, new PointF(150, 1000), 300, 300 );
+            
+            	// 填充符号(多边形方式)
+            	const float fSide	= 500;
+            	PointF[] apt		= new PointF[5];
+            	for(int i = 0; i〈 apt.Length; i++)
+            	{
+            		double dAngle	= (i*0.8 - 0.5) * Math.PI;
+            		apt[i]			= new PointF( 
+            		(int)( fSide * ( 0.5 + 0.48 * Math.Cos(dAngle) ) + 400 ),
+            		(int)( fSide * ( 0.5 + 0.48 * Math.Sin(dAngle) ) )
+            		);
+            	}
+            	m_Drawer.FillSymbol( e.Graphics, sym, 50, 50, 0f, Color.Empty, apt );
+            
+            	// 绘制符号
+            	sym = m_Lib.GetSymbol( 1, 0 );														// 默认符号(用 m_Lib.GetSymbol( 1 );可替换)
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 200, 300, 250, 0, 45.0f, Color.Violet );		// 单色(高为0，按指定宽绘制)
+            	sym = m_Lib.GetSymbol( 1, 2 );														// 指定索引符号1中的第2帧
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 600, 1000, 500, 250, 45.0f );		
+            
+            	sym = m_Lib.GetSymbol( 2, 0 );
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 1000, 300, 0, 250, 45.0f );					// 宽为0，按指定高绘制
+            	sym = m_Lib.GetSymbol( 2, 2 );														// 指定索引符号2中的第2帧
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 1000, 1000, 500, 250, 45.0f, Color.Violet );	// 单色
+            	
+            	sym = m_Lib.GetSymbol( 3 );
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 1400, 300, 300, 300, 45.0f );
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 1400, 1000, 500, 250, 45.0f );
+            
+            	sym = m_Lib.GetSymbol( 4 );
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 1900, 300, 0, 300, 45.0f );					// 宽为0，按指定高绘制
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 1900, 1000, 500, 250, 45.0f );
+             </code>
+             </example>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.ISymbolDrawer">
+            <summary>
+            符号绘制接口，规范了符号绘制方法调用形式，其实现类可以实现各自的特殊绘制逻辑。绘制符号时，只绘制符号图元，而不再绘制符号图元中包含的帧。
+            </summary>
+            <remarks>
+            符号绘制，封闭了绘制符号的变化需求，使应用程序中的符号绘制方式易于更改。
+            调用CSymbolLib.GetSymbol获得符号对象，再调用本接口的成员函数绘制符号。
+            在需要更改符号绘制方式时，实例化另一个符号绘制对象，来代替当前使用的符号绘制对象。
+            </remarks>
+            编写：徐景周，2006.4.10
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.ISymbolDrawer.DrawSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            在指定的位置，以指定的角度，宽高绘制符号。
+            本方法的目的是设计成一个通用的GDI API	绘图函数。坐标类型和GDI+相同.
+            </summary>
+            <param name=" g ">符号绘制画布</param>
+            <param name=" sym ">要绘制的符号</param>
+            <param name="x">要绘制符号的水平坐标</param>
+            <param name="y">要绘制符号的垂直坐标</param>
+            <param name="fWidth">符号宽度,如果为0，则以指定的高度(fHeight) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="fHeight">符号高度,如果为0，则以指定的宽度(fWidth) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="fAngle">整体符号的角度</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.ISymbolDrawer.DrawSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Double,System.Double,System.Single,System.Drawing.Color)">
+            <summary>
+            在指定的位置，以指定的角度，宽高和单一颜色绘制符号。
+            本方法的目的是设计成一个通用的GDI API	绘图函数。坐标类型和GDI+相同.
+            </summary>
+            <param name="g">符号绘制画布</param>
+            <param name="sym">要绘制的符号</param>
+            <param name="x">要绘制符号的水平坐标</param>
+            <param name="y">要绘制符号的垂直坐标</param>
+            <param name="fWidth">符号宽度,如果为0，则以指定的高度(fHeight) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="fHeight">符号高度,如果为0，则以指定的宽度(fWidth) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="fAngle">整体符号的角度</param>
+            <param name="Unicolor">符号的单一颜色</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.ISymbolDrawer.FillSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Single,System.Drawing.Color,System.Drawing.Drawing2D.GraphicsPath)">
+            <summary>
+            符号充填
+            </summary>
+            <param name=" g ">符号绘制画布</param>
+            <param name=" sym ">符号索引</param>
+            <param name="fWidth">符号宽度</param>
+            <param name="fHeight">符号高度</param>
+            <param name="fAngle">整体符号的角度</param>
+            <param name="color">符号的单一颜色</param>
+            <param name=" path ">充填路径</param>
+            <remarks>
+            实现技术：
+            ①　创建符号大小的内存位图作为画布，在其上进行绘制操作；
+            ②　完成后利用它创建纹理画刷，进行平铺，用画刷的旋转功能进行整体角度旋转；
+            ③　最后在指定的路径中利用纹理画刷进行填充。
+            </remarks>
+            <example> 
+            <code>
+            简单用法：
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse( new Rectangle( 50, 50, 600, 600 ));
+            FillSymbol( 5, 200, 200, 45.0f, Color.Empty, path );
+            </code>
+            </example>
+            编写：徐景周，2005.12.26
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.ISymbolDrawer.FillSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Single,System.Drawing.Color,System.Drawing.PointF[])">
+            <summary>
+            用符号充填多边形
+            </summary>
+            <param name=" g ">符号绘制画布</param>
+            <param name=" sym ">符号索引</param>
+            <param name="fWidth">符号宽度</param>
+            <param name="fHeight">符号高度</param>
+            <param name="fAngle">整体符号的角度</param>
+            <param name="color">符号的单一颜色</param>
+            <param name=" polygon ">多边形点数组</param>
+            编写：徐景周，2005.12.26 
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.ISymbolDrawer.FillSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Single,System.Drawing.Color,System.Drawing.RectangleF)">
+            <summary>
+            用符号充填矩形
+            </summary>
+            <param name=" g ">符号绘制画布</param>
+            <param name=" sym ">符号索引</param>
+            <param name="fWidth">符号宽度</param>
+            <param name="fHeight">符号高度</param>
+            <param name="fAngle">整体符号的角度</param>
+            <param name="color">符号的单一颜色</param>
+            <param name=" rect ">矩形大小</param>
+            编写：徐景周，2005.12.26
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.ISymbolDrawer.FillSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Single,System.Drawing.Color,System.Drawing.PointF,System.Single,System.Single)">
+            <summary>
+            用符号充填椭圆
+            </summary>
+            <param name=" g ">符号绘制画布</param>
+            <param name=" sym ">符号索引</param>
+            <param name="fWidth">符号宽度</param>
+            <param name="fHeight">符号高度</param>
+            <param name="fAngle">整体符号的角度</param>
+            <param name="color">符号的单一颜色</param>
+            <param name=" ellipseCeneter ">椭圆中心点</param>
+            <param name=" fEllipseA ">椭圆a轴长度（X轴）</param>
+            <param name=" fEllipseB ">椭圆b轴长度（Y轴）</param>
+            编写：徐景周，2005.12.26
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.#ctor">
+            <summary>
+            CSymbolDrawer构造涵数，无参
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.DrawSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            实现 ISymbolDrawer接口的成员方法。在指定的位置，以指定的角度，宽高绘制符号。
+            本方法的目的是设计成一个通用的GDI API	绘图函数。坐标类型和GDI+相同.
+            </summary>
+            <param name="g">符号绘制画布</param>
+            <param name="sym">要绘制的符号</param>
+            <param name="x">要绘制符号的水平坐标</param>
+            <param name="y">要绘制符号的垂直坐标</param>
+            <param name="fWidth">符号宽度,如果为0，则以指定的高度(fHeight) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="fHeight">符号高度,如果为0，则以指定的宽度(fWidth) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="fAngle">整体符号的角度</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.DrawSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Double,System.Double,System.Single,System.Drawing.Color)">
+            <summary>
+            实现 ISymbolDrawer接口的成员方法。在指定的位置，以指定的角度，宽高和单一颜色绘制符号。
+            本方法的目的是设计成一个通用的GDI API	绘图函数。坐标类型和GDI+相同.
+            </summary>
+            <param name="g">符号绘制画布</param>
+            <param name="sym">要绘制的符号</param>
+            <param name="x">要绘制符号的水平坐标</param>
+            <param name="y">要绘制符号的垂直坐标</param>
+            <param name="fWidth">符号宽度,如果为0，则以指定的高度(fHeight) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="fHeight">符号高度,如果为0，则以指定的宽度(fWidth) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="fAngle">整体符号的角度</param>
+            <param name="Unicolor">符号的单一颜色</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.DrawSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Single,System.Single,System.Drawing.Color)">
+            <summary>
+            实现 ISymbolDrawer接口的成员方法。在指定的位置，以指定的角度，宽高和单一颜色绘制符号。
+            本方法的目的是设计成一个通用的GDI API	绘图函数。坐标类型和GDI+相同.
+            </summary>
+            <param name="g">符号绘制画布</param>
+            <param name="sym">要绘制的符号</param>
+            <param name="fWidth">符号宽度,如果为0，则以指定的高度(fHeight) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="fHeight">符号高度,如果为0，则以指定的宽度(fWidth) 和不变形方式（以符号原始的宽高比例）绘制</param>
+            <param name="Unicolor">符号的单一颜色</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.FillSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Single,System.Drawing.Color,System.Drawing.Drawing2D.GraphicsPath)">
+            <summary>
+            符号充填
+            </summary>
+            <param name=" g ">符号绘制画布</param>
+            <param name=" sym ">符号索引</param>
+            <param name="fWidth">符号宽度</param>
+            <param name="fHeight">符号高度</param>
+            <param name="fAngle">整体符号的角度</param>
+            <param name="color">符号的单一颜色</param>
+            <param name=" path ">充填路径</param>
+            <remarks>
+            实现技术：
+            ①　创建符号大小的内存位图作为画布，在其上进行绘制操作；
+            ②　完成后利用它创建纹理画刷，进行平铺，用画刷的旋转功能进行整体角度旋转；
+            ③　最后在指定的路径中利用纹理画刷进行填充。
+            </remarks>
+            <example>
+            <code>	
+            FillSymbol简单用法：
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse( new Rectangle( 50, 50, 600, 600 ));
+            FillSymbol( 5, 200, 200, 45.0f, Color.Empty, path );
+            </code>
+            </example>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.FillSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Single,System.Drawing.Color,System.Drawing.PointF[])">
+             <summary>
+             用符号充填多边形
+             </summary>
+             <param name=" g ">符号绘制画布</param>
+             <param name=" sym ">符号索引</param>
+             <param name="fWidth">符号宽度</param>
+             <param name="fHeight">符号高度</param>
+             <param name="fAngle">整体符号的角度</param>
+             <param name="color">符号的单一颜色</param>
+             <param name=" polygon ">多边形点数组</param>
+             <remarks>
+             实现技术：
+            	①　创建符号大小的内存位图作为画布，在其上进行绘制操作；
+            	②　完成后利用它创建纹理画刷，进行平铺，用画刷的旋转功能进行整体角度旋转；
+            	③　最后在指定的路径中利用纹理画刷进行填充。
+             </remarks>
+             <example>
+             <c>FillSymbol使用示例</c>
+             <code>
+             // 坐标单位
+            	e.Graphics.PageUnit	= GraphicsUnit.Millimeter;
+            	e.Graphics.PageScale = 0.1f;
+            
+            	ISymbolDrawer	m_Drawer = new CSymbolDrawer();
+            	CSymbolLib		m_Lib = new CSymbolLib();
+            	
+            	// 打开符号库文件
+            	m_Lib.OpenLibFile("Symbol.xml");
+            	
+            	CSymbol sym	= m_Lib.GetSymbol( 0 );
+            	// 填充符号(多边形方式)
+            	const float fSide	= 500;
+            	PointF[] apt		= new PointF[5];
+            	for(int i = 0; i〈 apt.Length; i++)
+            	{
+            		double dAngle	= (i*0.8 - 0.5) * Math.PI;
+            		apt[i]			= new PointF( 
+            		(int)( fSide * ( 0.5 + 0.48 * Math.Cos(dAngle) ) + 400 ),
+            		(int)( fSide * ( 0.5 + 0.48 * Math.Sin(dAngle) ) )
+            		);
+            	}
+            	m_Drawer.FillSymbol( e.Graphics, sym, 50, 50, 0f, Color.Empty, apt );
+             </code>
+             </example>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.FillSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Single,System.Drawing.Color,System.Drawing.RectangleF)">
+             <summary>
+             用符号充填矩形
+             </summary>
+             <param name=" g ">符号绘制画布</param>
+             <param name=" sym ">符号索引</param>
+             <param name="fWidth">符号宽度</param>
+             <param name="fHeight">符号高度</param>
+             <param name="fAngle">整体符号的角度</param>
+             <param name="color">符号的单一颜色</param>
+             <param name=" rect ">矩形大小</param>
+             <remarks>
+             实现技术：
+            	①　创建符号大小的内存位图作为画布，在其上进行绘制操作；
+            	②　完成后利用它创建纹理画刷，进行平铺，用画刷的旋转功能进行整体角度旋转；
+            	③　最后在指定的路径中利用纹理画刷进行填充。
+             </remarks>
+             <example>
+             <c>FillSymbol使用示例</c>
+             <code>
+             // 坐标单位
+            	e.Graphics.PageUnit	= GraphicsUnit.Millimeter;
+            	e.Graphics.PageScale = 0.1f;
+            
+            	ISymbolDrawer	m_Drawer = new CSymbolDrawer();
+            	CSymbolLib		m_Lib = new CSymbolLib();
+            	
+            	// 打开符号库文件
+            	m_Lib.OpenLibFile("Symbol.xml");
+            	
+            	CSymbol sym	= m_Lib.GetSymbol( 0 );
+            	// 填充符号(椭圆方式，单色)
+            	m_Drawer.FillSymbol( e.Graphics, sym, 100, 100, 45.0f, Color.Green, new Rectangle( 50, 50, 600, 600 ) );
+             </code>
+             </example>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.FillSymbol(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymbol,System.Double,System.Double,System.Single,System.Drawing.Color,System.Drawing.PointF,System.Single,System.Single)">
+             <summary>
+             用符号充填椭圆
+             </summary>
+             <param name=" g ">符号绘制画布</param>
+             <param name=" sym ">符号索引</param>
+             <param name="fWidth">符号宽度</param>
+             <param name="fHeight">符号高度</param>
+             <param name="fAngle">整体符号的角度</param>
+             <param name="color">符号的单一颜色</param>
+             <param name=" ellipseCeneter ">椭圆中心点</param>
+             <param name=" fEllipseA ">椭圆a轴长度（X轴）</param>
+             <param name=" fEllipseB ">椭圆b轴长度（Y轴）</param>
+             <remarks>
+             实现技术：
+            	①　创建符号大小的内存位图作为画布，在其上进行绘制操作；
+            	②　完成后利用它创建纹理画刷，进行平铺，用画刷的旋转功能进行整体角度旋转；
+            	③　最后在指定的路径中利用纹理画刷进行填充。
+             </remarks>
+             <example>
+             <c>FillSymbol使用示例</c>
+             <code>
+             // 坐标单位
+            	e.Graphics.PageUnit	= GraphicsUnit.Millimeter;
+            	e.Graphics.PageScale = 0.1f;
+            
+            	ISymbolDrawer	m_Drawer = new CSymbolDrawer();
+            	CSymbolLib		m_Lib = new CSymbolLib();
+            	
+            	// 打开符号库文件
+            	m_Lib.OpenLibFile("Symbol.xml");
+            	
+            	CSymbol sym	= m_Lib.GetSymbol( 0 );
+            	// 填充符号(椭圆方式，单色)
+            	m_Drawer.FillSymbol( e.Graphics, sym, 100, 100, 45.0f, Color.Green, new PointF(150, 1000), 300, 300 );
+             </code>
+             </example>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.DrawCurve(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymCurve,System.Drawing.Color)">
+            <summary>
+            绘制曲线符号
+            </summary>
+            <param name=" g ">符号绘制画布</param>
+            <param name=" curve ">要绘制的曲线符号</param>
+            <param name="Unicolor">符号的单一颜色</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.DrawText(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymText,System.Drawing.Color)">
+            <summary>
+            绘制文字符号
+            </summary>
+            <param name=" g ">符号绘制画布</param>
+            <param name=" text ">要绘制的文字符号</param>
+            <param name="Unicolor">符号的单一颜色</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolDrawer.DrawSector(System.Drawing.Graphics,Jurassic.Graph.Drawer.Symbol.CSymSector,System.Drawing.Color)">
+            <summary>
+            绘制椭圆或扇形符号
+            </summary>
+            <param name=" g ">符号绘制画布</param>
+            <param name=" sector ">要绘制的椭圆或扇形符号</param>
+            <param name="Unicolor">符号的单一颜色</param>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.SymbolLibInfo">
+            <summary>
+            符号库信息结构。 
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.SymbolLibInfo.sLibName">
+            <summary>
+            符号库名称
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.SymbolLibInfo.sApplication">
+            <summary>
+            符号库应用
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.SymbolLibInfo.sAuthor">
+            <summary>
+            符号库作者
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.SymbolLibInfo.#ctor(System.String,System.String,System.String)">
+            <summary>
+            SymbolLibInfo构造涵数
+            </summary>
+            <param name="name">库名称</param>
+            <param name="application">符号库应用</param>
+            <param name="author">符号库作者</param>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CSymbolLib">
+             <summary>
+             符号库类，用于对符号库进行各种操作。
+             </summary>
+             <example>
+             <c>符号库使用示例</c>
+             <code>
+             // 坐标单位
+            	e.Graphics.PageUnit	= GraphicsUnit.Millimeter;
+            	e.Graphics.PageScale = 0.1f;
+            
+            	ISymbolDrawer	m_Drawer = new CSymbolDrawer();
+            	CSymbolLib		m_Lib = new CSymbolLib();
+            	
+            	// 打开符号库文件
+            	m_Lib.OpenLibFile("Symbol.xml");
+            	
+            	CSymbol sym	= m_Lib.GetSymbol( 0 );
+            	// 填充符号(椭圆方式，单色)
+            	m_Drawer.FillSymbol( e.Graphics, sym, 100, 100, 45.0f, Color.Green, new PointF(150, 1000), 300, 300 );
+            
+            	// 绘制符号
+            	sym = m_Lib.GetSymbol( 1, 0 );														// 默认符号(用 m_Lib.GetSymbol( 1 );可替换)
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 200, 300, 250, 0, 45.0f, Color.Violet );		// 单色(高为0，按指定宽绘制)
+            	sym = m_Lib.GetSymbol( 1, 2 );														// 指定索引符号1中的第2帧
+            	m_Drawer.DrawSymbol( e.Graphics, sym, 600, 1000, 500, 250, 45.0f );		
+            	
+             </code>
+             <c>线型库中使用符号库示例</c>
+             <code>
+             // 创建绘制对象
+             CCurveStyleDrawer drawer = new CCurveStyleDrawer();
+             drawer.SymbolLib.OpenLibFile("Symbol.xml");
+            
+             // 打开线型库
+             CCurveStyleLib curveStyleLib = new CCurveStyleLib();
+             curveStyleLib.OpenLibFile("curveStyle.xml");
+            
+             // 数据
+             CPointDCollections lstPnts = new CPointDCollections();
+             lstPnts.Add(new CPointD(100,700));
+             lstPnts.Add(new CPointD(400,300));
+             lstPnts.Add(new CPointD(900,1200));
+            
+             // 用ID=1的线型绘制曲线
+             drawer.DrawCurveStyle(g, curveStyleLib.GetCurveStyle(1), lstPnts, 1, 1);
+             </code>
+             </example>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbolLib.m_xmlDoc">
+            <summary>
+            XML文档对象
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbolLib.m_hash">
+            <summary>
+            符号对象散列表
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.#ctor">
+            <summary>
+            CSymbolLib构造涵数，无参
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.OpenLibFile(System.String)">
+            <summary>
+            打开库文件
+            </summary>
+            <param name="sFileName">根据文件名称打开指定的符号库</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.OpenLibFile(System.IO.Stream)">
+            <summary>
+            根据流对象打开指定的符号库
+            </summary>
+            <param name="stream">包含要读取的 XML 数据的流</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.OpenLibFile(System.Xml.XmlDocument)">
+             <summary>
+            根据xml文档对象打开指定的符号库
+             </summary>
+             <param name="xmlDoc"></param>
+             <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.SaveLib">
+            <summary>
+            保存符号库，有问题(会抛出异常)
+            </summary>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.SaveLib(System.String)">
+            <summary>
+            将符号库另存为
+            </summary>
+            <param name="sFileName">另存的符号库文件名</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.LoadToBuffer(System.Xml.XmlNode)">
+            <summary>
+            加载符号库片断到缓存中，用于从图件文档内嵌的符号集中加载
+            </summary>
+            <param name="node">要加载的库节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.LoadToBuffer(System.IO.Stream)">
+            <summary>
+            加载符号库片断到缓存中，用于从文件流内嵌的符号对象集中加载
+            </summary>
+            <param name="stream">包含符号对象数据的二进制输入流</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.LoadToBuffer(System.String)">
+            <summary>
+            将指定符号库加载到缓冲区中
+            </summary>
+            <param name="sFileName">库文件名</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.SaveBuffer(System.Xml.XmlNode)">
+            <summary>
+            将缓存的符号对象保存到node节点下。用于将文档使用过的符号对象嵌入到文档中保存.
+            </summary>
+            <param name="node">保存符号对象数据的Xml节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.SaveBuffer(System.IO.Stream)">
+             <summary>
+             将缓存的符号对象保存到Stream流中。用于将使用过的符号对象嵌入到流中，只对新建的空流保存后的文件才有效。
+             </summary>
+             <example>
+             <code>
+            	public bool Test_SaveBuffer_Stream()
+            	{
+            		// 读取到文件流中，只对新建的空流保存后的文件才有效。
+            		FileStream fs	= new FileStream( m_SaveFile, FileMode.Create, FileAccess.Write );
+            
+            		bool bResult	= false;
+            		bResult			= m_Lib.SaveBuffer( fs );
+            		Debug.Assert( bResult );
+            	
+            		// 关闭流文件
+            		fs.Close();
+            	
+            		return bResult;
+            	}
+             </code>
+             </example>
+             <param name="stream">保存符号对象数据的流</param>
+             <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.SaveBuffer(System.String)">
+            <summary>
+            将缓存的符号保存到文件.
+            </summary>
+            <param name="sFileName">保存符号库文件名</param>
+            <returns>是否成功</returns> 
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.ClearSymbolLib">
+            <summary>
+            清空已有的符号库内容
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.CreateNewLib(System.String,Jurassic.Graph.Drawer.Symbol.SymbolLibInfo)">
+            <summary>
+            创建新的符号库
+            </summary>
+            <param name="sLibFileName">库文件名</param>
+            <param name="libInfo">库说明信息</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.EditLibInfo(Jurassic.Graph.Drawer.Symbol.SymbolLibInfo)">
+            <summary>
+            编辑符号库信息，保存结果，调用SaveLib
+            </summary>
+            <param name="libInfo">库说明信息</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.GetLibInfo">
+            <summary>
+            获取符号库说明信息
+            </summary>
+            <returns>符号库说明信息</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.PutSymbolToLib(System.Int32,Jurassic.Graph.Drawer.Symbol.CSymbol)">
+            <summary>
+            将符号对象保存到符号库中，保存调用SaveLib。
+            </summary>
+            <param name="nID">符号对象ID</param>
+            <param name="sym">符号对象</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.ReplaceSymbol(System.Int32,Jurassic.Graph.Drawer.Symbol.CSymbol)">
+            <summary>
+            将符号中的nID符号对象（索引为nID）用指定的sym符号对象替换，保存调用SaveLib。
+            </summary>
+            <param name="nID">符号对象ID</param>
+            <param name="sym">符号对象</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.DelSymbolFromLib(System.Int32)">
+            <summary>
+            将符号库中的索引为nID符号对象从库中删除，保存调用SaveLib。
+            </summary>
+            <param name="nID">符号索引号</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.GetSymbolIndex">
+            <summary>
+            获得符号库索引信息，索引信息的数据文档结构符合索引格式规范。用于构造符号列表树。
+            获取的策略：首先从buffer中获得符号信息，再从符号库文件中获得符号信息，如果在buffer中有的符号，
+            就忽略符号库文件中的符号。
+            </summary>
+            <returns>xml文档</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.GetSymbolNoBuffer(System.Int32,System.Int32)">
+            <summary>
+            根据符号ID和帧序得到符号对象，不实现缓存功能，用于选取符号。
+            </summary>
+            <param name="nID">符号索引号</param>
+            <param name="nFrame">帧序号,从1开始,因为第0帧就是符号本身。</param>
+            <returns>指定的符号</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.GetSymbolNoBuffer(System.Int32)">
+            <summary>
+            根据符号ID得到默认的符号对象，不实现缓存功能，用于选取符号。
+            </summary>
+            <param name="nID">符号索引号</param>
+            <returns>指定的符号</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.GetSymbol(System.Int32,System.Int32)">
+            <summary>
+            从符号库中取出指定索引号和帧号的符号，如果要求的符号在缓存(m_hash)中，
+            则返回缓存(m_hash)的符号对象，否则从符号文件中生成符号对象，同时放入缓存(m_hash)中。
+            </summary>
+            <param name="nID">符号索引号</param>
+            <param name="nFrame">帧序号,从1开始,因为第0帧就是符号本身</param>
+            <returns>指定的符号</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.GetSymbol(System.Int32)">
+            <summary>
+            从符号库中取出指定索引的默认符号。
+            </summary>
+            <param name="nID">符号索引号</param>
+            <returns>指定的符号</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.CreateSymbolFromXmlDoc(System.Xml.XmlDocument,System.Int32)">
+            <summary>
+            从符号库文件创建符号对象 
+            </summary>
+            <param name="doc">xml文档</param>
+            <param name="nID">符号索引号</param>
+            <returns>指定的符号</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.GetSymbolBufferSize">
+            <summary>
+            返回符号库中缓冲区大小
+            </summary>
+            <returns>缓存大小</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.ValidationEventHandle(System.Object,System.Xml.Schema.ValidationEventArgs)">
+            <summary>
+            读取符号库符号时错误信息显示
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolLib.CreateDrawer(System.String)">
+            <summary>
+            创建符号绘制
+            </summary>
+            <param name="sName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CSymText">
+            <summary>
+            文字符号，从CSymbolElement派生。
+            编写：徐景周，2006.4.10
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CSymbolElement">
+            <summary>
+            符号及符号图元的基类。作为子符号的符号也被视作符号图元。
+            编写：徐景周，2006.4.10
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbolElement.m_fAngle">
+            <summary>
+            旋转角度
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbolElement.m_RotateOrigin">
+            <summary>
+            旋转原点
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolElement.#ctor">
+            <summary>
+            CSymbolElement构造涵数
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolElement.Read(System.Xml.XmlElement)">
+            <summary>
+            从xml元素读取数据
+            </summary>
+            <param name="elm">包含数据的xml节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolElement.Write(System.Xml.XmlElement)">
+            <summary>
+            将数据写到xml元素
+            </summary>
+            <param name="elm">包含数据的xml节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbolElement.RotateOrigin">
+            <summary>
+            符号旋转基点
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbolElement.Angle">
+            <summary>
+            符号旋转角度
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymText.m_FontName">
+            <summary>
+            字体名称
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymText.m_FontStyle">
+            <summary>
+            字体风格	
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymText.m_FontColor">
+            <summary>
+            文字颜色
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymText.m_FontSize">
+            <summary>
+            文字大小
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymText.m_strText">
+            <summary>
+            文字内容
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymText.m_ptX">
+            <summary>
+            文字左上角的X坐标
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymText.m_ptY">
+            <summary>
+            文字右上角的Y坐标
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymText.#ctor">
+            <summary>
+            CSymText构造涵数，无参
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymText.Read(System.Xml.XmlElement)">
+            <summary>
+            从xml元素读取数据
+            </summary>
+            <param name="elm">包含数据的xml节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymText.Write(System.Xml.XmlElement)">
+            <summary>
+            将数据写到xml元素
+            </summary>
+            <param name="elm">包含数据的xml节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymText.RotateOrigin">
+            <summary>
+            旋转原点
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CSymElmCollections">
+            <summary>
+            符号、子符号等元素(CSymbolElement)集合。
+            编写：徐景周，2006.4.10
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymElmCollections.Add(Jurassic.Graph.Drawer.Symbol.CSymbolElement)">
+            <summary>
+            实现IList.Add方法，将CSymbolElement添加到 CollectionBase 的结尾处。
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymElmCollections.IndexOf(Jurassic.Graph.Drawer.Symbol.CSymbolElement)">
+            <summary>
+            实现IList.IndexOf 方法，搜索指定的 CSymbolElement，并返回整个 CollectionBase 中第一个匹配项的从零开始的索引。
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymElmCollections.Insert(System.Int32,Jurassic.Graph.Drawer.Symbol.CSymbolElement)">
+            <summary>
+            实现IList.Insert 方法，将元素插入 CollectionBase 的指定索引处。
+            </summary>
+            <param name="index"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymElmCollections.Remove(Jurassic.Graph.Drawer.Symbol.CSymbolElement)">
+            <summary>
+            实现IList.Remove 方法，将指定元素删除。
+            </summary>
+            <param name="value">值</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymElmCollections.Contains(Jurassic.Graph.Drawer.Symbol.CSymbolElement)">
+            <summary>
+            实现IList.Contains 方法，是否List中包含value元素。
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymElmCollections.Item(System.Int32)">
+            <summary>
+            CSymbolElement索引器
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CurveType">
+            <summary>
+            符号曲线样式。
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CurveType.Border">
+            <summary>
+            绘边界线
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CurveType.Fill">
+            <summary>
+            面充填
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CurveType.Both">
+            <summary>
+            绘边界线和面充填
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CSymCurve">
+            <summary>
+            曲线符号，从CSymbolElement派生。
+            编写：徐景周，2006.4.10
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymCurve.m_pts">
+            <summary>
+            点数组
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymCurve.m_nType">
+            <summary>
+            曲线绘制类型
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymCurve.m_nBorderStyle">
+            <summary>
+            边线的线型
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymCurve.m_fBorderWidth">
+            <summary>
+            边线的宽度
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymCurve.m_clrBorderColor">
+            <summary>
+            边线的颜色
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymCurve.m_clrFillColor">
+            <summary>
+            填充颜色
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymCurve.#ctor">
+            <summary>
+            CSymCurve构造涵数，无参
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymCurve.Read(System.Xml.XmlElement)">
+            <summary>
+            从xml元素读取数据
+            </summary>
+            <param name="elm">包含数据的xml节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymCurve.Write(System.Xml.XmlElement)">
+            <summary>
+            将数据写到xml元素
+            </summary>
+            <param name="elm">包含数据的xml节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.ScaleStyles">
+            <summary>
+            缩放样式（Zoom -- 放大，OriginalAspect -- 原始比例 ）。
+            编写：徐景周，2006.4.10
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.ScaleStyles.Zoom">
+            <summary>
+            放大
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.ScaleStyles.OriginalAspect">
+            <summary>
+            原始比例
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CSymbol">
+            <summary>
+            符号类，包括了符号帧、符号图元，从CSymbolElement派生。
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_sFullname">
+            <summary>
+             带分类信息的全名
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_ptCenter">
+            <summary>
+            符号的中心点
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_ScaleStyle">
+            <summary>
+             子图元是否同步缩放
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_bRotate">
+            <summary>
+             子图元是否同步旋转
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_fWidth">
+            <summary>
+             宽度
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_fHeight">
+            <summary>
+             高度
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_ScaleX">
+            <summary>
+             X方向放大系数 
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_ScaleY">
+            <summary>
+             Y方向放大系数
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_bVarWidth">
+            <summary>
+             符号内的线宽是否可变(有些符号中的图形在符号缩放时，线的宽度不随之变化)
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_clrBackground">
+            <summary>
+             符号背景色
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_Children">
+            <summary>
+             子符号元素
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymbol.m_Frames">
+            <summary>
+             符号帧集合
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbol.#ctor">
+            <summary>
+            CSymbol构造涵数，无参
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbol.ReadSymbolHead(System.Xml.XmlElement)">
+            <summary>
+            从xml元素读取数据外围属性
+            </summary>
+            <param name="node">XML节点</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbol.Read(System.Xml.XmlElement)">
+            <summary>
+            从xml元素读取数据
+            </summary>
+            <param name="node">XML节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbol.Write(System.Xml.XmlElement)">
+            <summary>
+            将数据写到xml元素
+            </summary>
+            <param name="node">XML节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.BackColor">
+            <summary>
+            符号背景色
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.VarWidth">
+            <summary>
+             符号内的线宽是否可变(有些符号中的图形在符号缩放时，线的宽度不随之变化)
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.ScaleX">
+            <summary>
+            得到符号的X缩放比例
+            制作符号时此值恒为1.0
+            使用符号时可以改变
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.ScaleY">
+            <summary>
+            得到符号的Y方向缩放比例
+            制作符号时此值恒为1.0
+            使用符号时可以改变
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.Angle">
+            <summary>
+            符号旋转角度值
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.Width">
+            <summary>
+            符号原始宽度
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.Height">
+            <summary>
+            符号原始高度
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.SymbolFullName">
+            <summary>
+            符号原整全名
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.CenterPoint">
+            <summary>
+            符号的中心点
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.Rotate">
+            <summary>
+            符号是否旋转
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.ScaleStyle">
+            <summary>
+            符号缩放风格
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.Children">
+            <summary>
+            子符号集合
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbol.Frames">
+            <summary>
+            符号帧集合
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CSymbolCollections">
+            <summary>
+            符号(CSymbol)集合，用于表示符号帧。
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolCollections.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolCollections.Add(Jurassic.Graph.Drawer.Symbol.CSymbol)">
+            <summary>
+            实现IList.Add方法，将CSymbol添加到 CollectionBase 的结尾处。
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolCollections.IndexOf(Jurassic.Graph.Drawer.Symbol.CSymbol)">
+            <summary>
+            实现IList.IndexOf 方法，搜索指定的 CSymbol，并返回整个 CollectionBase 中第一个匹配项的从零开始的索引。
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolCollections.Insert(System.Int32,Jurassic.Graph.Drawer.Symbol.CSymbol)">
+            <summary>
+            实现IList.Insert 方法，将元素插入 CollectionBase 的指定索引处。
+            </summary>
+            <param name="index"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolCollections.Remove(Jurassic.Graph.Drawer.Symbol.CSymbol)">
+            <summary>
+            实现IList.Remove 方法，将元素value删除。
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolCollections.Remove(System.Int32)">
+            <summary>
+            实现IList.Remove 方法，将指定index索引元素删除。
+            </summary>
+            <param name="index">索引号</param>
+            <seealso cref="M:System.Collections.IList.Remove(System.Object)"/>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymbolCollections.Contains(Jurassic.Graph.Drawer.Symbol.CSymbol)">
+            <summary>
+            实现IList.Contains 方法，是否List中包含value元素。
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymbolCollections.Item(System.Int32)">
+            <summary>
+            符号(CSymbol)集合的索引器
+            </summary>
+        </member>
+        <member name="T:Jurassic.Graph.Drawer.Symbol.CSymSector">
+            <summary>
+            椭圆、扇形图元，从CSymbolElement派生。
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymSector.m_fStartAngle">
+            <summary>
+            起始角度 
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymSector.m_fSweepAngle">
+            <summary>
+            起始到终止角度间弧度值
+            </summary>
+        </member>
+        <member name="F:Jurassic.Graph.Drawer.Symbol.CSymSector.m_rcBound">
+            <summary>
+            椭圆外包矩形
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymSector.#ctor">
+            <summary>
+            CSymSector构造涵数，无参
+            </summary>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymSector.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            CSymSector构造涵数
+            </summary>
+            <param name="x">起点水平位置</param>
+            <param name="y">起点垂直位置</param>
+            <param name="width">宽度</param>
+            <param name="height">高度</param>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymSector.Read(System.Xml.XmlElement)">
+            <summary>
+            从xml元素读取数据
+            </summary>
+            <param name="elm">包含数据的xml节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymSector.Write(System.Xml.XmlElement)">
+            <summary>
+            将数据写到xml元素
+            </summary>
+            <param name="elm">包含数据的xml节点</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Jurassic.Graph.Drawer.Symbol.CSymSector.Initialize">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymSector.IsDrawArc">
+            <summary>
+            是绘制扇形还是弧形(true = 弧形(椭圆)， false = 扇形)
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymSector.IsBorderVisible">
+            <summary>
+            是否绘制边界
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymSector.IsFill">
+            <summary>
+            是否填充
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymSector.FillColor">
+            <summary>
+            填充色
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymSector.EdgeColor">
+            <summary>
+            边界颜色
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymSector.PenWidth">
+            <summary>
+             画笔宽度
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymSector.PenStyle">
+            <summary>
+             边界线画笔线形
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymSector.StartAngle">
+            <summary>
+            起始角度.
+            </summary>
+        </member>
+        <member name="P:Jurassic.Graph.Drawer.Symbol.CSymSector.SweepAngle">
+            <summary>
+            起始到终止间弧度值
+            </summary>
+        </member>
+    </members>
+</doc>

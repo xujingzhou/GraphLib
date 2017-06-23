@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SymLib xmlns="http://www.jurassic.com.cn/SymML.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jurassic.com.cn/SymML.xsd 符号库.xsd" name="" application="" author="">
+  <Symbol id="4" fullname="父符号4/子符号4" centerx="0" centery="0" width="100" height="100" zoomctrl="Zoom" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+    <Symbol fullname="" centerx="0" centery="0" width="50" height="50" zoomctrl="Zoom" rotatable="false" variablewidth="true" backcolor="FFFFFFFF">
+      <SymText text="同步缩放，不同步旋转" fontname="宋体" fontstyle="Regular" fontcolor="FF000000" fontsize="10" x="0" y="0" rotate="0" />
+      <SymArc type="Border" shape="Ellipse" borderstyle="Solid" borderwidth="1" bordercolor="FFFF0000" fillcolor="FF0000FF" x="0" y="0" width="50" height="50" start="0" end="360" rotate="0" />
+    </Symbol>
+  </Symbol>
+  <Symbol id="3" fullname="父符号3/子符号3" centerx="0" centery="0" width="100" height="100" zoomctrl="Zoom" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+    <Symbol fullname="" centerx="0" centery="0" width="50" height="50" zoomctrl="OriginalAspect" rotatable="false" variablewidth="true" backcolor="FFFFFFFF">
+      <SymText text="不变形缩放，不同步旋转" fontname="宋体" fontstyle="Regular" fontcolor="FF000000" fontsize="10" x="0" y="0" rotate="0" />
+      <SymArc type="Border" shape="Ellipse" borderstyle="Solid" borderwidth="1" bordercolor="FFFF0000" fillcolor="FF0000FF" x="0" y="0" width="50" height="50" start="0" end="360" rotate="0" />
+      <SymCurve type="Both" borderstyle="Solid" borderwidth="2" bordercolor="FF000000" fillcolor="FFFFFFFF">
+        <Point x="-15" y="-20" />
+        <Point x="0" y="0" />
+        <Point x="0" y="10" />
+        <Point x="10" y="-15" />
+        <Point x="-15" y="-20" />
+      </SymCurve>
+    </Symbol>
+  </Symbol>
+  <Symbol id="2" fullname="父符号2/子符号2" centerx="0" centery="0" width="100" height="100" zoomctrl="Zoom" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+    <Symbol fullname="" centerx="0" centery="0" width="50" height="50" zoomctrl="Zoom" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+      <SymText text="同步缩放，同步旋转" fontname="宋体" fontstyle="Regular" fontcolor="FF000000" fontsize="10" x="0" y="0" rotate="0" />
+      <SymArc type="Border" shape="Ellipse" borderstyle="Solid" borderwidth="1" bordercolor="FFFF0000" fillcolor="FF0000FF" x="0" y="0" width="50" height="50" start="0" end="270" rotate="0" />
+    </Symbol>
+    <Frames>
+      <Symbol fullname="" centerx="0" centery="0" width="50" height="50" zoomctrl="OriginalAspect" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+        <SymText text="同步缩放，同步旋转" fontname="宋体" fontstyle="Regular" fontcolor="FF000000" fontsize="10" x="0" y="0" rotate="0" />
+      </Symbol>
+      <Symbol fullname="" centerx="0" centery="0" width="50" height="50" zoomctrl="OriginalAspect" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+        <SymArc type="Border" shape="Ellipse" borderstyle="Solid" borderwidth="1" bordercolor="FFFF0000" fillcolor="FF0000FF" x="0" y="0" width="50" height="50" start="0" end="270" rotate="0" />
+      </Symbol>
+    </Frames>
+  </Symbol>
+  <Symbol id="1" fullname="父符号1/子符号1" centerx="0" centery="0" width="100" height="100" zoomctrl="Zoom" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+    <Symbol fullname="" centerx="0" centery="0" width="50" height="50" zoomctrl="OriginalAspect" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+      <SymText text="不变形缩放，同步旋转" fontname="宋体" fontstyle="Regular" fontcolor="FF000000" fontsize="10" x="0" y="0" rotate="0" />
+      <SymArc type="Both" shape="Ellipse" borderstyle="Solid" borderwidth="1" bordercolor="FFFF0000" fillcolor="FF0000FF" x="0" y="0" width="50" height="50" start="0" end="360" rotate="0" />
+    </Symbol>
+    <Frames>
+      <Symbol fullname="" centerx="0" centery="0" width="50" height="50" zoomctrl="OriginalAspect" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+        <SymText text="不变形缩放，同步旋转" fontname="宋体" fontstyle="Regular" fontcolor="FF000000" fontsize="10" x="0" y="0" rotate="0" />
+        <SymArc type="Both" shape="Ellipse" borderstyle="Solid" borderwidth="1" bordercolor="FFFF0000" fillcolor="FF0000FF" x="0" y="0" width="50" height="50" start="0" end="360" rotate="0" />
+      </Symbol>
+      <Symbol fullname="" centerx="0" centery="0" width="50" height="50" zoomctrl="OriginalAspect" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+        <SymText text="不变形缩放，同步旋转" fontname="宋体" fontstyle="Regular" fontcolor="FF000000" fontsize="10" x="0" y="0" rotate="0" />
+      </Symbol>
+    </Frames>
+  </Symbol>
+  <Symbol id="0" fullname="父符号0/子符号0/孙子符号0" centerx="0" centery="0" width="100" height="100" zoomctrl="Zoom" rotatable="true" variablewidth="true" backcolor="FFFFFFFF">
+    <SymText text="HaHa" fontname="宋体" fontstyle="Regular" fontcolor="FF0000FF" fontsize="15" x="0" y="0" rotate="45" />
+    <SymCurve type="Border" borderstyle="Solid" borderwidth="2" bordercolor="FF000000" fillcolor="FFFFFFFF">
+      <Point x="0" y="0" />
+      <Point x="50" y="50" />
+    </SymCurve>
+    <SymArc type="Border" shape="Ellipse" borderstyle="DashDotDot" borderwidth="1" bordercolor="FFFF0000" fillcolor="FF0000FF" x="0" y="0" width="100" height="100" start="0" end="360" rotate="0" />
+  </Symbol>
+</SymLib>

@@ -1,0 +1,637 @@
+using System;								// 类型IntPtr
+using System.Diagnostics;					// 调试Debug
+using System.Xml;							// Xml
+using System.IO;							// 使用File
+using System.Runtime.InteropServices;		// 使用DllImport
+using System.Windows.Forms;					// MessageBox
+
+using Jurassic.Graph.Drawer.Symbol;			// 符号库
+
+namespace TestSymbol
+{
+	#region ShellAPI
+
+	/// <summary>
+	/// 使用中shell32.dll中的API涵数ShellExecute，实现按默认关联方式打开各种文件，jingzhou xu。
+	/// </summary>
+	class ShellApi
+	{
+		/// <summary>
+		/// ShellExecute中的参数
+		/// </summary>
+		public enum ShowCommands : int
+		{
+			SW_HIDE             = 0,
+			SW_SHOWNORMAL       = 1,
+			SW_NORMAL           = 1,
+			SW_SHOWMINIMIZED    = 2,
+			SW_SHOWMAXIMIZED    = 3,
+			SW_MAXIMIZE         = 3,
+			SW_SHOWNOACTIVATE   = 4,
+			SW_SHOW             = 5,
+			SW_MINIMIZE         = 6,
+			SW_SHOWMINNOACTIVE  = 7,
+			SW_SHOWNA           = 8,
+			SW_RESTORE          = 9,
+			SW_SHOWDEFAULT      = 10,
+			SW_FORCEMINIMIZE    = 11,
+			SW_MAX              = 11
+		}
+
+		/// <summary>
+		/// 激活win32中的API涵数ShellExecute。
+		/// </summary>
+		/// <remarks>
+		/// 参数lpOperation的可能取值为："edit"、"explore"、"find"、 "open"、"print"。
+		/// </remarks>
+		/// <param name="hwnd"></param>
+		/// <param name="lpOperation"></param>
+		/// <param name="lpFile"></param>
+		/// <param name="lpParameters"></param>
+		/// <param name="lpDirectory"></param>
+		/// <param name="nShowCmd"></param>
+		/// <returns></returns>
+		[DllImport("shell32.dll")]
+		public static extern IntPtr ShellExecute(
+			IntPtr hwnd,
+			string lpOperation,
+			string lpFile,
+			string lpParameters,
+			string lpDirectory,
+			ShowCommands nShowCmd );
+	}
+
+	#endregion
+
+	/// <summary>
+	/// 对CSymbolLib符号库基础操作类中主要功能进行测试。
+	/// 编写：徐景周，2006.3.15
+	/// </summary>
+	public class TestSymbolLib
+	{
+		#region 成员变量
+
+		/// <summary>
+		/// 符号库成员变量
+		/// </summary>
+		CSymbolLib	m_Lib		= new CSymbolLib();
+
+		string		m_SaveFile	= "TestSymbolLib.xml";
+		string		m_OpenFile	= "Symbol.xml";
+
+		#endregion
+
+		#region 构造涵数
+
+		public TestSymbolLib()
+		{
+			//
+			// TODO: 在此处添加构造函数逻辑
+			//
+		}
+
+		#endregion
+
+		#region 综合测试
+
+		/// <summary>
+		/// 综合测试
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_All()
+		{
+			// ---------------------------------------------
+			// 独立测试
+
+			// 打开库
+			Test_OpenLibFile_Filename();
+			Test_OpenLibFile_XmlDocument();
+			Test_OpenLibFile_Stream();
+
+			// 保存库
+			Test_SaveLib_SaveAs();
+			Test_SaveLib();
+
+			// 获取符号
+			Test_GetSymbol();
+			Test_GetSymbolNoBuffer();
+
+			// 缓冲操作
+			Test_LoadToBuffer_XmlNode();
+			Test_LoadToBuffer_Stream();
+			Test_SaveBuffer_XmlNode();
+			Test_SaveBuffer_Stream();
+
+			// 库元素操作
+			Test_PutSymbolToLib();
+			Test_ReplaceSymbol();
+			Test_DelSymbolFromLib();
+
+			// 库信息操作
+			Test_CreateNewLib();
+			Test_EditGetLibInfo();
+
+			MessageBox.Show( "独立涵数测试成功！", "Test_All" );
+
+			// 库索引信息
+			Test_GetSymbolIndex();
+			// ---------------------------------------------
+
+			// ---------------------------------------------
+			// 组合测试
+
+			// 对库信息进行组合测试
+			Test_Compose_LibInfo();
+
+			// 对打开、保存库进行组合测试
+			Test_Compose_OpenSave();
+
+			// 对获取符号，以及向库中加入符号、替换符号和删除符号组合测试
+			Test_Compose_LibElement();
+			// ---------------------------------------------
+
+			return true;
+		}
+
+		#endregion
+
+		#region 组合测试
+		/// <summary>
+		/// 组合测试，对库信息进行组合测试
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_Compose_LibInfo()
+		{
+			Test_CreateNewLib();
+			Test_EditGetLibInfo();
+	
+			// 打开保存后的文件，进行查看
+			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+				m_SaveFile, "", "", 
+				ShellApi.ShowCommands.SW_SHOWNORMAL );
+
+			string strResult = "测试结果：\n";
+			strResult		+= "  将库信息改为，LibName：符号库；Application：符号库测试；Author：xujingzhou";
+			MessageBox.Show( strResult, "Test_Compose_LibInfo" );
+
+			return true;
+		}
+
+		/// <summary>
+		/// 对打开、保存库进行组合测试
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_Compose_OpenSave()
+		{
+			// 打开库文件
+			XmlTextReader tr	= new XmlTextReader( m_OpenFile );
+			XmlDocument _xmlDoc = new XmlDocument();
+			_xmlDoc.Load( tr );
+			tr.Close();	
+			m_Lib.OpenLibFile( _xmlDoc );
+			
+			// 将打开库文件的内容加载到缓存中
+			m_Lib.LoadToBuffer( (XmlNode)_xmlDoc.DocumentElement );
+//			Test_LoadToBuffer_Stream();
+
+			// 将缓存再添加到库节点
+			m_Lib.SaveBuffer( (XmlNode)_xmlDoc.DocumentElement );
+
+			// 保存库文件
+			m_Lib.SaveLib( m_SaveFile );
+
+			// 打开保存后的文件，进行查看
+			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+				m_SaveFile, "", "", 
+				ShellApi.ShowCommands.SW_SHOWNORMAL );
+			MessageBox.Show( "保存两遍内容后的库文件结果。", "Test_Compose_OpenSave" );
+
+			return true;
+		}
+
+		/// <summary>
+		/// 对获取符号，以及向库中加入符号、替换符号和删除符号组合测试
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_Compose_LibElement()
+		{
+			// 打开库文件
+			XmlTextReader tr	= new XmlTextReader( m_OpenFile );
+			XmlDocument _xmlDoc = new XmlDocument();
+			_xmlDoc.Load( tr );
+			tr.Close();	
+			m_Lib.OpenLibFile( _xmlDoc );
+
+			// ----------------------------------------------------
+			// 获取库中第1索引，2帧符号， 有缓冲
+			CSymbol _Symbol = m_Lib.GetSymbol( 1, 2 );
+			// 将此符号添加到库中索引0中
+			m_Lib.PutSymbolToLib( 0, _Symbol );
+			// 保存
+			m_Lib.SaveLib( m_SaveFile );
+			// 打开保存后的文件，进行查看
+			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+				m_SaveFile, "", "", 
+				ShellApi.ShowCommands.SW_SHOWNORMAL );
+			MessageBox.Show( "获取库Symbol.xml中第1索引、2帧符号，并将其添加索引0中结果。", "Test_Compose_LibElement" );
+			// ----------------------------------------------------
+
+			// ----------------------------------------------------
+			// 获取库中第1索引符号，无缓冲
+			_Symbol = m_Lib.GetSymbolNoBuffer( 1, 0 );
+			// 用此符号替换库中第一个索引0符号
+			m_Lib.ReplaceSymbol( 0, _Symbol );
+			// 保存
+			m_Lib.SaveLib( m_SaveFile );
+			// 打开保存后的文件，进行查看
+			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+				m_SaveFile, "", "", 
+				ShellApi.ShowCommands.SW_SHOWNORMAL );
+			MessageBox.Show( "获取库Symbol.xml中第1索引符号，并替换原库中第0索引符号为它后的结果。", "Test_Compose_LibElement" );
+			// ----------------------------------------------------
+
+			// ----------------------------------------------------
+			// 删除库中第一个索引0符号
+			m_Lib.DelSymbolFromLib( 0 );
+			// 保存
+			m_Lib.SaveLib( m_SaveFile );
+			// 打开保存后的文件，进行查看
+			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+				m_SaveFile, "", "", 
+				ShellApi.ShowCommands.SW_SHOWNORMAL );
+			MessageBox.Show( "删除库中第一个索引0符号后的结果。", "Test_Compose_LibElement" );
+			// ----------------------------------------------------
+
+			return true;
+		}
+
+		#endregion
+
+		#region 库打开、保存独立测试
+
+		/// <summary>
+		/// 测试打开符号库文件，通过文件名
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_OpenLibFile_Filename()
+		{
+			bool bResult = false;
+			// 1.
+			bResult = m_Lib.OpenLibFile( "" );
+			Debug.Assert( !bResult );
+
+			// 2.
+			bResult = m_Lib.OpenLibFile( m_OpenFile );
+			Debug.Assert( bResult );
+
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试打开符号库文件，通过XML节点
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_OpenLibFile_XmlDocument()
+		{
+			XmlTextReader tr	= new XmlTextReader( m_OpenFile );
+			XmlDocument _xmlDoc = new XmlDocument();
+			_xmlDoc.Load( tr );
+			tr.Close();	
+
+			bool bResult = false;
+			// 1.
+			bResult	= m_Lib.OpenLibFile( (XmlDocument)null );
+			Debug.Assert( !bResult );
+
+			// 2.
+			bResult	= m_Lib.OpenLibFile( _xmlDoc );
+			Debug.Assert( bResult );
+
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试打开符号库文件，通过流
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_OpenLibFile_Stream()
+		{
+			// 库文件是否存在
+			if( !File.Exists( m_OpenFile ) )
+				return false;
+
+			// 读取到文件流中
+			FileStream fs	= new FileStream( m_OpenFile, FileMode.Open, FileAccess.Read );
+
+			bool bResult	= false;
+			// 1.
+			bResult	= m_Lib.OpenLibFile( (Stream)null );
+			Debug.Assert( !bResult );
+
+			// 2.
+			bResult	= m_Lib.OpenLibFile( fs );
+			Debug.Assert( bResult );
+
+			// 关闭流文件
+			fs.Close();
+
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试保存符号库为另一文件
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_SaveLib_SaveAs()
+		{
+			bool bResult	= false;
+			bResult			= m_Lib.SaveLib( m_SaveFile );
+			Debug.Assert( bResult );
+
+			// 打开保存后的文件，进行查看
+//			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+//				m_SaveFile, "", "", 
+//				ShellApi.ShowCommands.SW_SHOWNORMAL );
+
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试保存符号库，有问题
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_SaveLib()
+		{
+			bool bResult	= false;
+			bResult			= m_Lib.SaveLib();
+			Debug.Assert( !bResult );
+
+			return bResult;
+		}
+
+		#endregion
+
+		#region 获取符号独立测试
+
+		/// <summary>
+		/// 测试获取指定索引和帧号的符号， 有缓存
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_GetSymbol()
+		{
+			bool bResult	= false;
+			CSymbol sym		= m_Lib.GetSymbol( 1, 0 );			// 默认符号，0帧
+			if( sym != null )
+				bResult = true;
+			Debug.Assert( bResult );
+
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试获取指定索引和帧号的符号， 无缓存
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_GetSymbolNoBuffer()
+		{
+			bool bResult	= false;
+			CSymbol sym		= m_Lib.GetSymbolNoBuffer( 1, 2 );	// 符号中第2帧
+			if( sym != null )
+				bResult = true;
+			Debug.Assert( bResult );
+
+			return bResult;
+		
+		}
+
+		#endregion
+
+		#region 缓存独立测试
+
+		/// <summary>
+		/// 测试加载符号库片断到缓存中，通过XmlNode
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_LoadToBuffer_XmlNode()
+		{
+			XmlTextReader tr	= new XmlTextReader( m_OpenFile );
+			XmlDocument _xmlDoc = new XmlDocument();
+			_xmlDoc.Load( tr );
+			tr.Close();	
+
+			bool bResult	= false;
+			bResult			= m_Lib.LoadToBuffer( (XmlNode)_xmlDoc.DocumentElement );
+			Debug.Assert( bResult );
+
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试加载符号库片断到缓存中，通过流
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_LoadToBuffer_Stream()
+		{
+			// 库文件是否存在
+			if( !File.Exists( m_OpenFile ) )
+				return false;
+
+			// 读取到文件流中
+			FileStream fs	= new FileStream( m_OpenFile, FileMode.Open, FileAccess.Read );
+
+			bool bResult	= false;
+			bResult			= m_Lib.LoadToBuffer( fs );
+			Debug.Assert( bResult );
+
+			// 关闭流文件
+			fs.Close();
+
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试将缓存的符号对象保存到node节点下
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_SaveBuffer_XmlNode()
+		{
+			XmlTextReader tr	= new XmlTextReader( m_OpenFile );
+			XmlDocument _xmlDoc = new XmlDocument();
+			_xmlDoc.Load( tr );
+			tr.Close();	
+
+			bool bResult	= false;
+			bResult			= m_Lib.SaveBuffer( (XmlNode)_xmlDoc.DocumentElement );
+			Debug.Assert( bResult );
+
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试将缓存的符号对象保存到流中
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_SaveBuffer_Stream()
+		{
+			// 读取到文件流中，只对新建的空流保存后的文件才有效。
+			FileStream fs	= new FileStream( m_SaveFile, FileMode.Create, FileAccess.Write );
+
+			bool bResult	= false;
+			bResult			= m_Lib.SaveBuffer( fs );
+			Debug.Assert( bResult );
+
+			// 关闭流文件
+			fs.Close();
+
+			return bResult;
+		}
+		
+		#endregion
+
+		#region 库信息独立测试
+
+		/// <summary>
+		/// 测试创建新库
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_CreateNewLib()
+		{
+			SymbolLibInfo libInfo;
+			libInfo.sLibName		= "";	
+			libInfo.sApplication	= "";
+			libInfo.sAuthor			= "";
+
+			bool bResult	= false;
+			bResult			= m_Lib.CreateNewLib( m_SaveFile, libInfo );
+			Debug.Assert( bResult );
+
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试库信息/获取库信息
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_EditGetLibInfo()
+		{
+			SymbolLibInfo libInfo;
+			libInfo.sLibName		= "符号库";	
+			libInfo.sApplication	= "符号库测试";
+			libInfo.sAuthor			= "xujingzhou";
+
+			bool bResult	= false;
+			m_Lib.EditLibInfo( libInfo );
+
+			libInfo	= m_Lib.GetLibInfo();
+			if( libInfo.sLibName == "符号库" &&
+				libInfo.sApplication == "符号库测试" &&
+				libInfo.sAuthor == "xujingzhou" )
+				bResult = true;
+			Debug.Assert( bResult );
+
+			m_Lib.SaveLib( m_SaveFile );
+			// 打开保存后的文件，进行查看
+/*			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+				m_SaveFile, "", "", 
+				ShellApi.ShowCommands.SW_SHOWNORMAL );
+*/
+			return bResult;
+		}
+
+		#endregion
+
+		#region 库中符号操作独立测试
+
+		/// <summary>
+		/// 测试将符号对象保存到符号库中
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_PutSymbolToLib()
+		{
+			m_Lib.OpenLibFile( m_SaveFile );
+
+			bool bResult	= false;
+			CSymbol _Symbol = m_Lib.GetSymbol( 1 );
+			bResult			= m_Lib.PutSymbolToLib( m_Lib.GetSymbolBufferSize()+1, _Symbol );
+			Debug.Assert( bResult );
+
+			m_Lib.SaveLib( m_SaveFile );
+			// 打开保存后的文件，进行查看
+/*			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+				m_SaveFile, "", "", 
+				ShellApi.ShowCommands.SW_SHOWNORMAL );
+*/
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试将符号中的nID符号对象（索引为nID）用指定的sym符号对象替换
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_ReplaceSymbol()
+		{
+			m_Lib.OpenLibFile( m_SaveFile );
+
+			bool bResult	= false;
+			CSymbol _Symbol = m_Lib.GetSymbol( 1 );
+			bResult			= m_Lib.ReplaceSymbol( 0, _Symbol );	// 将第0个索引用第1个替换
+			Debug.Assert( bResult );
+
+			m_Lib.SaveLib( m_SaveFile );
+			// 打开保存后的文件，进行查看
+/*			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+				m_SaveFile, "", "", 
+				ShellApi.ShowCommands.SW_SHOWNORMAL );
+*/
+			return bResult;
+		}
+
+		/// <summary>
+		/// 测试将符号库中的索引为nID符号对象从库中删除
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_DelSymbolFromLib()
+		{
+			m_Lib.OpenLibFile( m_SaveFile );
+
+			bool bResult	= false;
+			bResult			= m_Lib.DelSymbolFromLib( 0 );			// 将第0个索引元素删除
+			Debug.Assert( bResult );
+
+			m_Lib.SaveLib( m_SaveFile );
+			// 打开保存后的文件，进行查看
+/*			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+							m_SaveFile, "", "", 
+							ShellApi.ShowCommands.SW_SHOWNORMAL );
+*/
+			return bResult;
+		}
+
+		#endregion
+
+		#region 符号库索引信息独立测试
+
+		/// <summary>
+		/// 测试获得符号库索引信息
+		/// </summary>
+		/// <returns>是否成功</returns>
+		public bool Test_GetSymbolIndex()
+		{
+			// 将库文件加入缓冲中
+			m_Lib.LoadToBuffer( m_OpenFile );
+
+			XmlDocument doc = m_Lib.GetSymbolIndex();
+			doc.Save( m_SaveFile );
+
+			ShellApi.ShellExecute( IntPtr.Zero, "open", 
+				m_SaveFile, "", "", 
+				ShellApi.ShowCommands.SW_SHOWNORMAL );
+
+			MessageBox.Show( "符号库索引信息GetSymbolIndex()", "Test_GetSymbolIndex" );
+
+			return true;
+		}
+
+		#endregion
+	}
+}
