@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by yushanshui (jurassic) -->
-<CurveStyleLib xmlns="http://www.jurassic.com.cn/CurveStyleML.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jurassic.com.cn/CurveStyleML.xsd CurveStyleML.xsd" name="基础线型库" application="通用制图" author="侏罗纪公司">
+<CurveStyleLib xmlns="http://www.jurassic.com.cn/CurveStyleML.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jurassic.com.cn/CurveStyleML.xsd CurveStyleML.xsd" name="基础线型库" application="通用制图" author="徐景周">
 	<CurveStyle id="1" fullname="通用曲线/虚线" width="1">
 		<CurvePen width="1" color="ff000000" color2="ffffffff" gradientcolor="false" dashstyle="Dash" startcap="NoAnchor" endcap="NoAnchor" dashcap="Flat" linejoin="Round" offset="0" offsettype="OffsetMixter"/>
 	</CurveStyle>
